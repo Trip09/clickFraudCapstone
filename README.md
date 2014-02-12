@@ -26,8 +26,7 @@ Project repository for Click-Fraud analytics Capstone
 - Nothing so far...
 
 ### External Links 
-- Nothing so far...
-(Project's Dropbox)
+- [IU Box](https://iu.box.com/s/gcdnmju6k48psy6f6w5h)
 
 ### Staging and Production Enviroments
 - Add to this section a simple how-to on how to create the enviroment
