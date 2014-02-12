@@ -11,10 +11,10 @@ click-fraud-capstone
 
 ## Project Overview
 
-Project repository for Click-Fraud analytics Capstone
+Project repository for Click-Fraud Analytics Capstone
 
 ### Contacts
-*Project members:*   
+*Project Members:*   
 - Bryden Basaran 
 - Everton Lima 
 - Ray McMaster
