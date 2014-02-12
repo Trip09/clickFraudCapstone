@@ -2,13 +2,11 @@ click-fraud-capstone
 ====================
 
 ## Table of Contents
-1. [Project Overview](#Project-Overview)
-  *[Contacts](#Contacts)
-  *[Frameworks Used](#Frameworks-Used)
-  *[External Links](#External-Links)
-  *[Staging and Production Enviroments](#staging-and-production-enviroments)
-
-
+1. [Project Overview](#project-overview)
+  * [Contacts](#contacts)
+  * [Frameworks Used](#frameworks-used)
+  * [External Links](#external-links)
+  * [Staging and Production Enviroments](#staging-and-production-enviroments)
 
 
 ## Project Overview
