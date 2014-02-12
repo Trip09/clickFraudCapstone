@@ -25,8 +25,9 @@ Project repository for Click-Fraud analytics Capstone
 ### Frameworks Used
 - Nothing so far...
 
-### External Links (Project's Dropbox)
+### External Links 
 - Nothing so far...
+(Project's Dropbox)
 
 ### Staging and Production Enviroments
 - Add to this section a simple how-to on how to create the enviroment
