@@ -10,7 +10,9 @@ click-fraud-capstone
 
 
 ## Project Overview
-A web analytics platform to detect click fraud and track user activity. Our solution will allow organizations to review how well their advertising budget is being utilized.
+A web analytics platform to detect click fraud and track user activity. Our solution will allow organizations 
+to review how well their advertising budget is being utilized and save them money on future advertising. By detecting click-fraud,
+our solution will allow organizations to better utilize their advertising budgets and target real consumers more efficiently.
 
 Project repository for Click-Fraud Analytics Capstone
 
