@@ -10,6 +10,7 @@ click-fraud-capstone
 
 
 ## Project Overview
+A web analytics platform to detect click fraud and track user activity.
 
 Project repository for Click-Fraud Analytics Capstone
 
@@ -23,10 +24,14 @@ Project repository for Click-Fraud Analytics Capstone
 - Dr. Mohammad Al Hasan
 
 ### Frameworks Used
-- Nothing so far...
+- JavaScript
+- php
+- MySQL
+- C
 
 ### External Links 
 - [IU Box](https://iu.box.com/s/gcdnmju6k48psy6f6w5h)
+- [Project Calendar](http://www.google.com/calendar/embed?src=krimzun.com_9q19bvjt1tr2qccdjo104849jc%40group.calendar.google.com&ctz=America/New_York)
 
 ### Staging and Production Enviroments
 - Add to this section a simple how-to on how to create the enviroment
