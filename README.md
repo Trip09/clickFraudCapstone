@@ -36,6 +36,8 @@ our solution will allow organizations to better utilize their advertising budget
 ### External Links 
 - [IU Box](https://iu.box.com/s/gcdnmju6k48psy6f6w5h)
 - [Project Calendar](http://www.google.com/calendar/embed?src=krimzun.com_9q19bvjt1tr2qccdjo104849jc%40group.calendar.google.com&ctz=America/New_York)
+- [HTTP Header Fields](http://en.wikipedia.org/wiki/List_of_HTTP_header_fields)
+  * This is important to keep in mind, as we can easily get this data from php, and make use of it in our learning algorithm.
 
 ### Staging and Production Enviroments
 - Add to this section a simple how-to on how to create the enviroment
