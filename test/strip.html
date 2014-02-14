@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<!--- 
+  This is an example of a javascript inject. It is the code tha is provided
+  to customer, and it execute our javascript file on their page.
+
+  It simply writes a <script></script> tag with our strip.js file being written to it.
+-->
+
+
+ <script type="text/javascript">
+  var stripJsHost = "../js/strip.js";
+  document.write('\x3Cscript type="text/javascript" src="' + stripJsHost +'">\x3C/script>');
+ </script>
+
+</body>
+</html>

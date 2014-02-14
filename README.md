@@ -28,6 +28,7 @@ our solution will allow organizations to better utilize their advertising budget
 
 ### Frameworks Used
 - JavaScript
+  * [jQuery](http://learn.jquery.com)
 - php
 - MySQL
 - C
