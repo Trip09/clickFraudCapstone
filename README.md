@@ -38,6 +38,8 @@ our solution will allow organizations to better utilize their advertising budget
 - [Project Calendar](http://www.google.com/calendar/embed?src=krimzun.com_9q19bvjt1tr2qccdjo104849jc%40group.calendar.google.com&ctz=America/New_York)
 - [HTTP Header Fields](http://en.wikipedia.org/wiki/List_of_HTTP_header_fields)
   * This is important to keep in mind, as we can easily get this data from php, and make use of it in our learning algorithm.
+- [XMLHttpRequest](http://www.w3schools.com/dom/dom_http.asp)
+  * Javascript object that can take care of the server communication request for us.
 
 ### Staging and Production Enviroments
 - Add to this section a simple how-to on how to create the enviroment

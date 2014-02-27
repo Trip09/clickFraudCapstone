@@ -1,40 +1,77 @@
-/* strip.js
- *
- *  Description: A lightweight script to retreive browser, time spent on pagr, and HTTP refer information.
+/* ==========================================================================
+ * Strip.js 
+ * Retreives HTTP Refer information from client pages, and outputs a server request.
+ * ========================================================================== */
+
+
+/*
+ * Pageview 
+ * Holds the date for each page view request
+ * - id is the userID whose website the request is coming from.
+ * - httpStrip retrives all header information.
  */
+var Pageview = function ( data) {
+  this.id = data;
 
-
-/* StripController
- *
- */
-
-var StripController = function(){
   return this;
-}
+};
 
-StripController.prototype.execute = function ( ) {
-  alert("hello, world");
+Pageview.prototype.httpStrip = function() {
+  var origin =  document.referrer;
+  var current = document.URL;
 
-  // TODO: Decide on model to hold retreived information,
-  // create an extra function to handle the several kinds of
-  // retrieval necessary. Need an interface for this so the code remains clean
-  // and we can easily change how this is being done, and reuse.
-  // -> Need to keep in mind this information will most likely be
-  // concatenated in JSON pairs and send over to the server-side
-  // (dabatase).
-  // -> data needs to be sanitized, don't imagine it would be too
-  // hard to fake http refers and make a mess of our data somehow
-  // hopefully no drop tables!
-  console.log(" Referrer: " + document.referrer);
-}
+  // Create a JSON Object with all http header information.
+  var JSON_Pageview = {"httpStrip:": [
+        {"userID": this.id, "origin": origin, "current": current},
+    ]
+  };
 
+  alert(JSON.stringify(JSON_Pageview));
+  return JSON_Pageview;
+};
 
-/* bootstrap() - Initializes code, calls controller.
- *
+/*
+ * View
+ * outputs information to a server
  */
-function bootstrap(){
-  var strip = new StripController;
-  strip.execute();
-}
+var ViewStrip = function ( model ) {
+  this.model = model;
+  return this;
+};
 
-bootstrap();
+ViewStrip.prototype.push = function () {
+  var jsonData = this.model.httpStrip();
+
+  //TODO: Create a XMLHttpRequest Object (takes care of the server communication in the back for us).
+  alert("push() called");
+};
+
+
+
+/*
+ * Controller
+ */
+var Strip = function () {
+  return this;
+};
+
+Strip.prototype.TrackView = function ( id ) {
+  // Set id for user request, and performs HTTP Header strip.
+  var model = new Pageview( id );
+  var view = new ViewStrip(model);
+
+  // Push information to the server
+  view.push();
+};
+
+/*
+ * Strip - this code should be executed in the page of the client (so clinet can input id informtion)
+ */
+function bootstrapper() {
+  var controller = new Strip;
+  var userID = '123';
+  controller.TrackView( userID );
+}
+bootstrapper();
+
+
