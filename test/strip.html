@@ -15,6 +15,11 @@
   var stripJsHost = "../js/strip.js";
   document.write('\x3Cscript type="text/javascript" src="' + stripJsHost +'">\x3C/script>');
  </script>
+ <script>
+  var controller = new Strip;
+  var userID = '123';
+  controller.TrackView( userID );
+ </script>
 
 </body>
 

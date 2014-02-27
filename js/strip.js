@@ -20,15 +20,38 @@ Pageview.prototype.httpStrip = function() {
   var origin =  document.referrer;
   var current = document.URL;
 
+  // Retreive additional header information
+  var req = new XMLHttpRequest();
+  req.open('GET', document.location, false);
+  req.send(null);
+  var headers = req.getAllResponseHeaders().toLowerCase();
+
+  //Retrieve Geolocation
+  if (window.XMLHttpRequest){
+    xmlhttp=new XMLHttpRequest();
+  } else {
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+
+  xmlhttp.onreadystatechange=function() {
+   if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+     // Code executes only after request is finished.
+     alert(xmlhttp.responseText);
+    }
+  }
+  xmlhttp.open("GET","http://freegeoip.net/json/",true);
+  xmlhttp.send();
+
   // Create a JSON Object with all http header information.
   var JSON_Pageview = {"httpStrip:": [
-        {"userID": this.id, "origin": origin, "current": current},
+        {"userID": this.id, "origin": origin, "current": current,},
     ]
   };
 
   alert(JSON.stringify(JSON_Pageview));
   return JSON_Pageview;
 };
+
 
 /*
  * View
@@ -43,9 +66,9 @@ ViewStrip.prototype.push = function () {
   var jsonData = this.model.httpStrip();
 
   //TODO: Create a XMLHttpRequest Object (takes care of the server communication in the back for us).
+
   alert("push() called");
 };
-
 
 
 /*
@@ -63,15 +86,4 @@ Strip.prototype.TrackView = function ( id ) {
   // Push information to the server
   view.push();
 };
-
-/*
- * Strip - this code should be executed in the page of the client (so clinet can input id informtion)
- */
-function bootstrapper() {
-  var controller = new Strip;
-  var userID = '123';
-  controller.TrackView( userID );
-}
-bootstrapper();
-
 
