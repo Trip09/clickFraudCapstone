@@ -42,6 +42,8 @@ our solution will allow organizations to better utilize their advertising budget
   * Javascript object that can take care of the server communication request for us.
 
 ### Staging and Production Enviroments
-- Add to this section a simple how-to on how to create the enviroment
-(set up apache, virtual machines,...)
+- The testing environment can be accessed at [click-fraud] (http://149.166.29.173/click-fraud).
+- git is enabled on the server for code updates from our private repository.
+- Use PuTTY or similar client to SSH into the server to issue commands and create a tunnel for access to phpmyadmin.
+- WinSCP or any other client can be used to transfer files to and from our development environment.
 
