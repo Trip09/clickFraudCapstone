@@ -70,6 +70,9 @@ our solution will allow organizations to better utilize their advertising budget
   * Example of datasets.
 - [Weka 3 - Data Mining Software in Java](http://www.cs.waikato.ac.nz/ml/weka/).
   * Sofware that does the number crunching for us.
+  * [Very good weka tutorial on classification](http://machinelearningmastery.com/how-to-run-your-first-classifier-in-weka/)
+  * [Data Format for Weka](http://www.cs.waikato.ac.nz/ml/weka/arff.html)
+
 
 ### Staging and Production Enviroments
 - The testing environment can be accessed at [click-fraud] (http://149.166.29.173/click-fraud).
