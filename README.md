@@ -11,12 +11,14 @@ click-fraud-capstone
   * [Frameworks Used](#frameworks-used)
   * [External Links](#external-links)
   * [Staging and Production Enviroments](#staging-and-production-enviroments)
-
+2. [Documentation](#documentation)
+  * [System overview](#system-overview)
 
 ## Project Overview
 A web analytics platform to detect click fraud and track user activity. Our solution will allow organizations 
 to review how well their advertising budget is being utilized and save them money on future advertising. By detecting click-fraud,
 our solution will allow organizations to better utilize their advertising budgets and target real consumers more efficiently.
+
 
 
 ### Project Phase
@@ -79,4 +81,9 @@ our solution will allow organizations to better utilize their advertising budget
 - git is enabled on the server for code updates from our private repository.
 - Use PuTTY or similar client to SSH into the server to issue commands and create a tunnel for access to phpmyadmin.
 - WinSCP or any other client can be used to transfer files to and from our development environment.
+
+## Documentation
+
+### System Overview
+    ![System at a glance](/docs/Overview.png "System Overview")
 
