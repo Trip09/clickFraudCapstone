@@ -85,6 +85,5 @@ our solution will allow organizations to better utilize their advertising budget
 ## Documentation
 
 ### System Overview
-
-    ![System at a glance](https://github.iu.edu/rmcmaste/click-fraud-capstone/raw/master/docs/Overview.png)
+  ![System Overview Diagram](/docs/overview.png)
 
