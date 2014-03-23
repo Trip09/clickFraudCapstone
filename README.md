@@ -85,5 +85,6 @@ our solution will allow organizations to better utilize their advertising budget
 ## Documentation
 
 ### System Overview
-  ![System Overview Diagram](/docs/overview.png)
+
+  ![System Overview Diagram](docs/overview.png)
 
