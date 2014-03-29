@@ -9,6 +9,11 @@
 
 <body>
 <?php
+
+// Retrieve Form Data
+$username = $_POST['username'];
+$password = $_POST['password'];
+
 // Initializes user session
 if( !isset($_SESSION) ) {
   session_start();
@@ -16,39 +21,50 @@ if( !isset($_SESSION) ) {
   $_SESSION['error'] =  false;
   $_SESSION['login'] = false;
 } 
-
-$username = $_POST['username'];
-$password = $_POST['password'];
+echo " username: " . $username;
+echo " password: " . $password;
 
 // Database connection
-$conn = mysqli_connect('localhost', 'bitnami', 'click_fraud');
+$conn = mysqli_connect('localhost', 'bitnami', 'click_fraud','click_fraud');
 if (mysqli_connect_errno() ){
-    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    echo "Failed to connect to mysqli: " . mysqlii_connect_error();
 }
-mysql_select_db('login', $conn);
 
-$username = mysql_real_escape_string($username);
-$query = "SELECT password, salt
-        FROM member
-        WHERE username = '$username';";
+$result = mysql_query("SELECT * FROM member");
 
-$result = mysql_query($query);
- 
-if(mysql_num_rows($result) == 0) // User not found.
+
+while ($row = mysql_fetch_array($result, MYSQL_BOTH)) {
+    printf ("ID: %s  Name: %s", $row[0], $row[1]);
+}
+
+//TODO: remove?
+//mysqli_select_db($conn,'click_fraud');
+
+// Database query
+// Returns password value.
+$username = mysqli_real_escape_string($username);
+$query = "SELECT * 
+          FROM member
+          WHERE username = '$username';";
+$result = mysqli_query($conn, $query);
+
+if(mysqli_num_rows($result) == 0) // User not found.
 {
     $_SESSION['error'] = true;
-  echo "NO USER";
+  echo " NO USER ";
     //header('Location: index.php');
 }
 
 // User exists, check for correct password.
-$userData = mysql_fetch_array($result, MYSQL_ASSOC);
-$hash = hash('sha256', $userData['salt'] . hash('sha256', $password) );
+//TODO: Hash passwords
+$userData = mysqli_fetch_array($result, MYSQL_BOTH);
+echo " database " . $userData[0] . " // ";
+//$hash = hash('sha256', $userData['salt'] . hash('sha256', $password) );
 
-if($hash != $userData['password']) // Incorrect password.
+if($password != $userData['password']) // Incorrect password.
 {
     $_SESSION['error'] = true;
-  echo "BAD PASSWORD";
+  echo " BAD PASSWORD ";
    // header('Location: index.php');
 }else{                             // Valid login.
   $_SESSION['username'] = $_POST['username'];
