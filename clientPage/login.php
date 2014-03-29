@@ -1,8 +1,18 @@
+<!DOCTYPE HTML>
+
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+</head>
+
+<body>
 <?php
 $username = $_POST['username'];
 $password = $_POST['password'];
  
-$conn = mysql_connect('localhost', 'root', '');
+$conn = mysql_connect('localhost', 'bitnami', 'click_fraud');
 mysql_select_db('login', $conn);
  
 $username = mysql_real_escape_string($username);
@@ -27,3 +37,6 @@ if($hash != $userData['password']) // Incorrect password. So, redirect to login_
 	header('Location: home.html');
 }
 ?>
+
+</body>
+</html>
