@@ -44,9 +44,19 @@ our solution will allow organizations to better utilize their advertising budget
 
 ###TODO
 * Understand Weka 3
- - Use example databasets contained in [UCI ML Repository](http://archive.ics.uci.edu/ml/) 
- to better understand [Weka 3 - Data Mining Software in Java](http://www.cs.waikato.ac.nz/ml/weka/).
-
+ - ~~Use example databasets contained in [UCI ML Repository](http://archive.ics.uci.edu/ml/) 
+ to better understand [Weka 3 - Data Mining Software in Java](http://www.cs.waikato.ac.nz/ml/weka/).~~
+ - Client Page
+   * Add a dashboard page, after user is logged in.
+   * Display information from the database (we can have it display as a table for now).
+ - Machine Learning (client code to call weka & browser info retrieval)
+   * Make sure the features we can are being pushed to the database
+   * Retreive features from the database and format into a weka accepted format
+   * Use Weka API on the formatted data
+   * Insert results back into the database.
+  - Database
+  * Must include: Client Information, Website Information, Click information,...
+  * We need to discuss the achitecture.
 
 ### Contacts
 *Project Members:*   
