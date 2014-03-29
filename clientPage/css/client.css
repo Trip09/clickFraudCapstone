@@ -1,3 +1,31 @@
+
+
+/* CUSTOMIZE NAV BAR
+-------------------------------------------------- */
+.navbar {
+  margin-bottom:0;
+}
+
+/* LOGIN FORM
+-------------------------------------------------- */
+.login-form{
+  margin-top:12px;
+}
+
+.login-form label {
+  padding-right: 10px;
+}
+
+.login-form input+label{
+  padding-left: 15px;
+}
+
+.login-form .btn  {
+  margin-left: 15px;
+  padding-top: 8px;
+}
+
+
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 

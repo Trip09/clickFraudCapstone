@@ -20,6 +20,21 @@
     <![endif]-->
   </head>
   <body>
+    <!-- PHP LOGIN - SESSION -->
+    <?php
+      if( isset($_SESSION) ){ // Check if session exists.
+        if( $_SESSION['error'] ) {      // Invalid login
+          echo "<h1>ERROR!</h1>";
+        } else if( $_SESSION['login']) { // Valid Login
+          echo "<h1>VALID LOGIN'</h1>";
+        }
+      } else {
+        session_start();
+        echo "<h1>NO ACTIVE SESSION</h1>";
+        $_SESSION['error'] =  false;
+        $_SESSION['login'] = false;
+      }
+    ?>
 
     <!-- Navigation Bar -->
     <nav class="navbar navbar-default" role="navigation">
@@ -37,10 +52,10 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dashboard <b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
@@ -54,14 +69,14 @@
       </ul>
     <ul class="nav navbar-nav navbar-right">
     <!-- Login Form -->
-    <form id="form1" class="navbar-form navbar-left" name="form1" method="post" action="login.php">
+    <form id="form1" class="login-form navbar-form navbar-left" name="form1" method="post" action="login.php">
       <div class="form-group">
         <label for="username">Username</label>
 	        <input type="text" name="username" id="username" />
         <label for="password">Password</label>
 	    <input type="password" name="password" id="password" />
       </div>
-	    <input type="submit" class="btn btn-default" name="button" id="button" value="Submit" />
+	    <input type="submit" class="btn btn-sm btn-default" name="button" id="button" value="Submit" />
     </form>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Help <b class="caret"></b></a>
