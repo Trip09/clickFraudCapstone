@@ -29,20 +29,20 @@ $conn = mysqli_connect('localhost', 'bitnami', 'click_fraud','click_fraud');
 if (mysqli_connect_errno() ){
     echo "Failed to connect to mysqli: " . mysqlii_connect_error();
 }
-
-$result = mysql_query("SELECT * FROM member");
+echo "Connection Success";
+/*$result = mysql_query("SELECT * FROM member");
 
 
 while ($row = mysql_fetch_array($result, MYSQL_BOTH)) {
     printf ("ID: %s  Name: %s", $row[0], $row[1]);
 }
-
-//TODO: remove?
+*/
+//TODO: remove possibly
 //mysqli_select_db($conn,'click_fraud');
 
 // Database query
 // Returns password value.
-$username = mysqli_real_escape_string($username);
+$username = mysql_real_escape_string($username);
 $query = "SELECT * 
           FROM member
           WHERE username = '$username';";
