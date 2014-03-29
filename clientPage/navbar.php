@@ -1,3 +1,27 @@
+<?php
+
+if( !isset($_SESSION) ) {
+  session_start(); 
+}
+
+$logged_out = '<label for="username">Username</label>
+        <input type="text" name="username" id="username" />
+          <label for="password">Password</label>
+        <input type="password" name="password" id="password" />
+        </div>';
+
+$logged_in = '<p id="welcome-message">Welcome, '.$_SESSION['username'] 
+        .'</p></div>
+          <input type="submit" class="btn btn-sm btn-default" name="button" id="button" value="Submit" />';
+
+if( $_SESSION['error'] ) {      // Invalid login
+  $form = $logged_out;
+} else if( $_SESSION['login']) { // Valid Login
+  $form = $logged_in;
+}
+
+
+echo '
 <!-- Navigation Bar -->
     <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
@@ -32,14 +56,9 @@
     <ul class="nav navbar-nav navbar-right">
     <!-- Login Form -->
     <form id="form1" class="login-form navbar-form navbar-left" name="form1" method="post" action="login.php">
-      <div class="form-group">
-        <label for="username">Username</label>
-	        <input type="text" name="username" id="username" />
-        <label for="password">Password</label>
-	    <input type="password" name="password" id="password" />
-      </div>
-	    <input type="submit" class="btn btn-sm btn-default" name="button" id="button" value="Submit" />
-    </form>
+      <div class="form-group">'
+    .$form
+    .'</form>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Help <b class="caret"></b></a>
           <ul class="dropdown-menu">
@@ -53,5 +72,7 @@
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
-</nav>
+</nav>';
+
+?>
 

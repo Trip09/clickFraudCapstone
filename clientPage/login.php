@@ -52,7 +52,7 @@ if(mysqli_num_rows($result) == 0) // User not found.
 {
     $_SESSION['error'] = true;
   echo " NO USER ";
-    //header('Location: index.php');
+  header('Location: index.php');
 }
 
 // User exists, check for correct password.
@@ -63,14 +63,14 @@ echo " database " . $userData[0] . " // ";
 
 if($password != $userData['password']) // Incorrect password.
 {
-    $_SESSION['error'] = true;
+  $_SESSION['error'] = true;
   echo " BAD PASSWORD ";
-   // header('Location: index.php');
+  //header('Location: index.php');
 }else{                             // Valid login.
   $_SESSION['username'] = $_POST['username'];
   $_SESSION['login'] = true;
   echo "LOGGED IN";
-	//header('Location: home.html');
+	header('Location: index.php');
 }
 ?>
 

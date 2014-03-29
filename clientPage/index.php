@@ -20,18 +20,6 @@
     <![endif]-->
   </head>
   <body>
-    <!-- PHP LOGIN - SESSION MANAGEMENT -->
-    <?php
-      if( isset($_SESSION) ){ // Check if session exists.
-        if( $_SESSION['error'] ) {      // Invalid login
-        } else if( $_SESSION['login']) { // Valid Login
-        }
-      } else {
-        session_start();
-        $_SESSION['error'] =  false;
-        $_SESSION['login'] = false;
-      }
-     ?>
 
     <!-- Navigation Bar 
     ================================================== -->
