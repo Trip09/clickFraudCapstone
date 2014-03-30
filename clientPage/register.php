@@ -5,10 +5,10 @@ $password2 = $_POST['veripass'];
 $email = $_POST['email'];
 
 if($password1 != $password2){
-    header('Location: registration.html');
+    header('Location: registration.php');
 }
 if(strlen($username) > 10){
-    header('Location: registration.html');
+    header('Location: registration.php');
 }   
 $conn = mysqli_connect('localhost', 'bitnami', 'click_fraud','click_fraud');
 if (mysqli_connect_errno() ){

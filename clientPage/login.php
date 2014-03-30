@@ -50,7 +50,7 @@ $result = mysqli_query($conn, $query);
 
 if(mysqli_num_rows($result) == 0) // User not found.
 {
-    $_SESSION['error'] = true;
+  $_SESSION['error'] = true;
   echo " NO USER ";
   header('Location: index.php');
 }

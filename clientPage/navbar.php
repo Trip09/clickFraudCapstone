@@ -1,23 +1,31 @@
 <?php
 
 if( !isset($_SESSION) ) {
-  session_start(); 
+  session_start();
+
+  $_SESSION['error'] =  false;
+  $_SESSION['login'] = false;
 }
 
 $logged_out = '<label for="username">Username</label>
         <input type="text" name="username" id="username" />
           <label for="password">Password</label>
         <input type="password" name="password" id="password" />
-        </div>';
+        </div>
+        <input type="submit" class="btn btn-sm btn-default" name="button" id="button" value="Submit" />';
 
 $logged_in = '<p id="welcome-message">Welcome, '.$_SESSION['username'] 
         .'</p></div>
-          <input type="submit" class="btn btn-sm btn-default" name="button" id="button" value="Submit" />';
+          <input type="submit" class="btn btn-sm btn-default" name="button" id="button" value="Logout" />';
 
-if( $_SESSION['error'] ) {      // Invalid login
-  $form = $logged_out;
-} else if( $_SESSION['login']) { // Valid Login
+if( $_SESSION['login']) { // Valid Login
   $form = $logged_in;
+} else {
+  $form = $logged_out;
+}
+
+if($_SESSION['error']){
+  echo '<h1>LOGIN FAIL</h1>';
 }
 
 
@@ -40,6 +48,7 @@ echo '
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Home</a></li>
         <li><a href="#">About</a></li>
+       <li><a href="#">About</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dashboard <b class="caret"></b></a>
           <ul class="dropdown-menu">
