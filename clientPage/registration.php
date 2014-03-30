@@ -8,10 +8,23 @@ session_start();
 /* Temporary INSECURE method to generate a session token: */
 $token = sha1(uniqid(microtime()));
 
+echo "session_id: ".session_id()."\n";
 
 /* Set token as Session Token: */
 $_SESSION['token'] = $token;
 //$_SESSION['token_time'] = time(); /* Time since UNIX epoc time; see http://php.net/manual/en/function.time.php for more information */
+echo "Token: $token";
+
+$_GET['error'];
+
+if($_GET['error']){
+  switch($_GET['error']){
+    case "0":
+      
+  }
+
+}
+
 
 ?>
 
