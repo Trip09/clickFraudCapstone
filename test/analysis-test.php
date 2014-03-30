@@ -2,6 +2,13 @@
 
 <?php
 
+
+//Connect to the Server.////////////////////////////////////////////////////////////////////////
+$conn = mysqli_connect('localhost', 'bitnami', 'click_fraud','click_fraud');
+if (mysqli_connect_errno() ){
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+}
+////////////////////////////////////////////////////////////////////////////////////////////////
 print <<< HERE
 
 
@@ -40,9 +47,14 @@ $headers = getallheaders();
 
 echo "\n\n\n";
 
-foreach ($headers as $name => $value) {
+foreach ($headers as $name => $value
 	echo "\n";
     echo "$name: $value\n";
+    //Insert name value Jason Pair into table. 
+    $query = "INSERT INTO clicks ()
+        VALUES ( '$name', '$value');"; // Not quite sure how to finish this query.
+	$result = mysqli_query($conn, $query); // researching now. 
+
 }
 
 // Broken:
