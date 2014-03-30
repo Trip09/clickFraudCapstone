@@ -62,7 +62,7 @@ $_SESSION['token'] = $token;
       <label for="vemail">Verify Email</label>
       <input type="vemail" name="vemail" id="vemail" required/>
 
-      <input type="submit" name="sToken" value="<?php echo htmlspecialchars($token) ?>" />
+      <input type="hidden" name="sToken" value="<?php echo htmlspecialchars($token) ?>" />
 
       <input type="submit" name="button" id="button" value="Submit" />
     </form>
