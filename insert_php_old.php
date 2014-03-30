@@ -6,7 +6,6 @@
 </head>
 
 <body>
-    
 <?php
 $con=mysqli_connect("localhost","bitnami","click_fraud","click_fraud");
 // Check connection
