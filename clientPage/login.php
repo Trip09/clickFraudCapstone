@@ -10,6 +10,10 @@
 <body>
 <?php
 
+/* LOGIN
+ * TODO: BRYDEN -> Close connections!
+ */
+
 // Retrieve Form Data
 $username = $_POST['username'];
 $password = $_POST['password'];
