@@ -1,3 +1,20 @@
+<?php
+
+/* Start session: */
+session_start();
+
+/* Generate Synchronizer Token: */
+
+/* Temporary INSECURE method to generate a session token: */
+$token = sha1(uniqid(microtime()));
+
+
+/* Set token as Session Token: */
+$_SESSION['token'] = $token;
+//$_SESSION['token_time'] = time(); /* Time since UNIX epoc time; see http://php.net/manual/en/function.time.php for more information */
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -42,6 +59,11 @@
 -->
       <label for="email">Email</label>
       <input type="email" name="email" id="email" required/>
+      <label for="vemail">Verify Email</label>
+      <input type="vemail" name="vemail" id="vemail" required/>
+
+      <input type="submit" name="sToken" value="<?php echo htmlspecialchars($token) ?>" />
+
       <input type="submit" name="button" id="button" value="Submit" />
     </form>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
