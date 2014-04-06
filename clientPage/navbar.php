@@ -2,32 +2,37 @@
 
 if( !isset($_SESSION) ) {
   session_start();
-
-  $_SESSION['error'] =  false;
   $_SESSION['login'] = false;
 }
 
+// Login Form.
+// user is loggeg out.
 $logged_out = '<label for="username">Username</label>
         <input type="text" name="username" id="username" />
           <label for="password">Password</label>
         <input type="password" name="password" id="password" />
         </div>
-        <input type="submit" class="btn btn-sm btn-default" name="button" id="button" value="Submit" />';
+        <input type="submit" class="btn btn-sm btn-default"
+        name="button" id="button" value="Submit"/>';
 
+// user is logged in.
 $logged_in = '<p id="welcome-message">Welcome, '.$_SESSION['username'] 
         .'</p></div>
-          <input type="submit" class="btn btn-sm btn-default" name="button" id="button" value="Logout" />';
+        <input type="submit" class="btn btn-sm btn-defaul:dt" 
+        name="button" id="button" value="Logout" />';
 
-if( $_SESSION['login']) { // Valid Login
+if( $_GET['login'] == 'logout' ){             // User requests logout
+  $_SESSION['login'] = false;
+} else if( $_SESSION['login'] == true) {      // Valid Login
   $form = $logged_in;
-} else {
+} else if( $_GET['login'] == 'bad_user'){     // User login name not found.
   $form = $logged_out;
-}
-
-if($_SESSION['error']){
-  echo '<h1>LOGIN FAIL</h1>';
-}
-
+} else if(  $_GET['login'] == 'bad_password') {// User password incorrect
+  $form = $logged_out;
+} else {
+  echo '<h1>NO LOGIN</h1> ';
+  $form = $logged_out;
+};
 
 echo '
 <!-- Navigation Bar -->
@@ -81,7 +86,9 @@ echo '
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
-</nav>';
+  </nav>
+
+  ';
 
 ?>
 
