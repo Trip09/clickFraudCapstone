@@ -21,10 +21,8 @@ $password = $_POST['password'];
 // Initializes user session
 if( !isset($_SESSION) ) {
   session_start();
-
-  $_SESSION['error'] =  false;
   $_SESSION['login'] = false;
-} 
+}
 echo " username: " . $username;
 echo " password: " . $password;
 
@@ -52,11 +50,11 @@ $query = "SELECT *
           WHERE username = '$username';";
 $result = mysqli_query($conn, $query);
 
+//TODO: Everton - I think this is wrong.
 if(mysqli_num_rows($result) == 0) // User not found.
 {
-  $_SESSION['error'] = true;
-  echo " NO USER ";
-  header('Location: index.php');
+  $_SESSION['login'] = false;
+  header('Location: index.php?login=bad_user');
 }
 
 // User exists, check for correct password.
@@ -67,13 +65,11 @@ echo " database " . $userData[0] . " // ";
 
 if($password != $userData['password']) // Incorrect password.
 {
-  $_SESSION['error'] = true;
-  echo " BAD PASSWORD ";
-  //header('Location: index.php');
+  $_SESSION['login'] = false;
+  header('Location: index.php?login=bad_password');
 }else{                             // Valid login.
   $_SESSION['username'] = $_POST['username'];
   $_SESSION['login'] = true;
-  echo "LOGGED IN";
 	header('Location: index.php');
 }
 ?>

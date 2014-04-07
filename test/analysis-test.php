@@ -1,18 +1,23 @@
-<!-- This is the page that is called from an image tag that will retrieve the request details -->
-
 <?php
+/* Analysis.php
+ *
+ *  Description:
+ *  Data Created:
+ *  Other:
+ *  Author:
+ *
+ * * * * * * * * * * * * * */
 
-
-//Connect to the Server.////////////////////////////////////////////////////////////////////////
+//Connect to the Server.
 $conn = mysqli_connect('localhost', 'bitnami', 'click_fraud','click_fraud');
 if (mysqli_connect_errno() ){
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
-////////////////////////////////////////////////////////////////////////////////////////////////
-print <<< HERE
 
-HERE;
 
+// MAKE REQUESTS
+
+//TODO: Add timer - what if sever dies connection should not hang
 //function freegeoip_locate($ip){};
 
 //function freegeoip_locate($ip) {
@@ -21,39 +26,21 @@ HERE;
     //return $geo;
 //}
 
-echo "Request information: \n";
+// Retrieve Plugin Information
+// TODO: Make a JS Call
 
 /* Retrieve customer information */
-if(isset($_GET["cID"])) echo "cID is set and the value is: " . $_GET["cID"] . "\n"; /* cID will need to be sanitized before being used in a database query or HTML output*/
+/* cID will need to be sanitized before being used in a database query or HTML output*/
+if(isset($_GET["cID"])) echo "cID is set and the value is: " . $_GET["cID"] . "\n"; 
 
-echo "User-Agent: " . $_SERVER["HTTP_USER_AGENT"]; /* Display the user's UA */
 
-echo "\n Show all HTTP headers using getallheaders(): \n";
 
-// Testing
 
-if (!function_exists('getallheaders')) 
-{ 
-	echo "Function does NOT exist\n";
 
-    function getallheaders() 
-    { 
-           $headers = ''; 
-       foreach ($_SERVER as $name => $value) 
-       { 
-           if (substr($name, 0, 5) == 'HTTP_') 
-           { 
-               $headers[str_replace(' ', '-', ucwords(strtolower(str_replace('_', ' ', substr($name, 5)))))] = $value; 
-           } 
-       } 
-       return $headers; 
-    } 
-} 
 
-$headers = getallheaders();
+// INSERT INFORMATION TO DATABADE
 
-echo "\n\n\n";
-
+/*
 foreach ($headers as $name => $value){
 	echo "\n";
     echo "$name: $value\n";
@@ -63,21 +50,9 @@ foreach ($headers as $name => $value){
 	//$result = mysqli_query($conn, $query); // researching now. 
 
 }
+ */
 
-/*function get_ip_address(){
-    foreach (array('HTTP_CLIENT_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_X_FORWARDED', 'HTTP_X_CLUSTER_CLIENT_IP', 'HTTP_FORWARDED_FOR', 'HTTP_FORWARDED', 'REMOTE_ADDR') as $key){
-        if (array_key_exists($key, $_SERVER) === true){
-            foreach (explode(',', $_SERVER[$key]) as $ip){
-                $ip = trim($ip); // just to be safe
-
-                if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE) !== false){
-                    return $ip;
-                }
-            }
-        }
-    }
-}
-*/
+// Ouput - Retrieval
 echo "<br>". $_SERVER['REMOTE_ADDR']. "<br>";
 echo $_SERVER['HTTP_X_FORWARDED_FOR']. "<br>";
 echo "<br>". $_SERVER['GATEWAY_INTERFACE']. "<br>" . $_SERVER['SERVER_ADDR'] . "<br>"
@@ -90,16 +65,31 @@ echo "<br>". $_SERVER['GATEWAY_INTERFACE']. "<br>" . $_SERVER['SERVER_ADDR'] . "
   . $_SERVER['HTTP_USER_AGENT'] . "<br>" . $_SERVER['HTTPS'] . "<br>"
 ;
 
-
+// Insert into database table
 $query = "INSERT INTO clicks (
  REMOTE_ADDR, HTTP_X_FORWARDED_FOR, GATEWAY_INTERFACE, SERVER_ADDR, SERVER_SOFTWARE, SERVER_PROTOCOL ,
   REQUEST_METHOD, REQUEST_TIME, REQUEST_TIME_FLOAT, QUERY_STRING, HTTP_ACCEPT_CHARSET, HTTP_ACCEPT_ENCODING,
-  HTTP_ACCEPT_LANGUAGE, HTTP_CONNECTION , HTTP_HOST, HTTP_REFERER, HTTP_USER_AGENT , HTTPS
-)VALUES ( '$_SERVER[REMOTE_ADDR]', '$_SERVER[HTTP_X_FORWARDED_FOR]', '$_SERVER[GATEWAY_INTERFACE]' ,'$_SERVER[SERVER_ADDR]' ,
-  '$_SERVER[SERVER_SOFTWARE]', '$_SERVER[SERVER_PROTOCOL]', '$_SERVER[REQUEST_METHOD]' ,'$_SERVER[REQUEST_TIME]' ,
-  '$_SERVER[REQUEST_TIME_FLOAT]' ,'$_SERVER[QUERY_STRING]', '$_SERVER[HTTP_ACCEPT_CHARSET]' ,'$_SERVER[HTTP_ACCEPT_ENCODING]' ,
-  '$_SERVER[HTTP_ACCEPT_LANGUAGE]' ,'$_SERVER[HTTP_CONNECTION]' ,'$_SERVER[HTTP_HOST]','$_SERVER[HTTP_REFERER]' ,
-  '$_SERVER[HTTP_USER_AGENT]' ,'$_SERVER[HTTPS]' );";
+  HTTP_ACCEPT_LANGUAGE, HTTP_CONNECTION , HTTP_HOST, HTTP_REFERER, HTTP_USER_AGENT , HTTPS) VALUES (
+    '$_SERVER[REMOTE_ADDR]',
+    '$_SERVER[HTTP_X_FORWARDED_FOR]', 
+    '$_SERVER[GATEWAY_INTERFACE]' ,
+    '$_SERVER[SERVER_ADDR]' ,
+    '$_SERVER[SERVER_SOFTWARE]', 
+    '$_SERVER[SERVER_PROTOCOL]', 
+    '$_SERVER[REQUEST_METHOD]' ,
+    '$_SERVER[REQUEST_TIME]' ,
+    '$_SERVER[REQUEST_TIME_FLOAT]' ,
+    '$_SERVER[QUERY_STRING]', 
+    '$_SERVER[HTTP_ACCEPT_CHARSET]' ,
+    '$_SERVER[HTTP_ACCEPT_ENCODING]' ,
+    '$_SERVER[HTTP_ACCEPT_LANGUAGE]' ,
+    '$_SERVER[HTTP_CONNECTION]' ,
+    '$_SERVER[HTTP_HOST]',
+    '$_SERVER[HTTP_REFERER]' ,
+    '$_SERVER[HTTP_USER_AGENT]' ,
+    '$_SERVER[HTTPS]' );";
+
+// Executes MySQL Query
 $result = mysqli_query($conn, $query);
 
 echo  "query sucess <br>";
@@ -122,6 +112,5 @@ foreach ($headers as $name => $value) {
     echo "$name: $value\n";
     echo "made it here";
 }*/
-
-
 ?>
+
