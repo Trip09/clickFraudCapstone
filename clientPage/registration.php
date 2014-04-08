@@ -90,38 +90,56 @@ if(isset($errorid)){
 
 
     <!-- Register Form -->
-    <h1>Register</h1>
-    <form id="form1" name="form1" method="post" action="register.php">
-        <label for="username">Username</label>
-        <input type="text" name="username" id="username" required/>
-        <?php if(isset($usererror)) echo '<font color="red"> * Username already exists.</font>'; ?>
-        <br>
+    <div id="regForm">
+      <h1 id="reg">Register</h1>
+      <form role="form" class="form-horizontal" id="form1" name="form1" method="post" action="register.php">
+        <div class="form-group">
+          <label for="username" class="col-sm-2 control-label">Username</label>
+          <div class="col-sm-10">
+            <input type="text" name="username" id="username" class="form-control" placeholder="Enter Name" required/>
+            <?php if(isset($usererror)) echo '<font color="red"> * Username already exists.</font>'; ?>
+          </div>
+        </div>
 
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" required/>
-        <?php if(isset($pwderror)) echo '<font color="red"> * Passwords must be more than 12 characters and contain three of the following: <br>    At least one uppercase letter, at least one lowercase letter, a number, or a symbol such as ! # $ % & \ ? or (space)</font>'; ?>
-        
-        <br>
-        <label for="veripass">Verify Password</label>
-        <input type="password" name="veripass" id="veripass" required/>
-        <?php if(isset($vpwderror)) echo '<font color="red"> * Passwords do not match.</font>'; ?>
-        <br>
+        <div class="form-group">
+          <label for="password" class="col-sm-2 control-label">Password</label>
+          <div class="col-sm-10">
+            <input type="password" name="password" id="password" class="form-control" placeholder="Enter Password" required/>
+            <?php if(isset($pwderror)) echo '<font color="red"> * Passwords must be more than 12 characters long and contain three of the following: <br>1)At least one uppercase letter<br>2) At least one lowercase letter<br>3) A number<br>4) A symbol such as ! # $ % & \ ? or (space)</font>'; ?>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="veripass" class="col-sm-2 control-label">Verify Password</label>
+          <div class="col-sm-10">
+            <input type="password" name="veripass" id="veripass" class="form-control" placeholder="Re-enter Password" required/>
+            <?php if(isset($vpwderror)) echo '<font color="red"> * Passwords do not match.</font>'; ?>
+          </div>
+        </div>
 
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" required/>
-        <?php if(isset($emailerror)) echo '<font color="red"> * This email has already been registered.</font>'; ?>
-        <br>
-        <label for="vemail">Verify Email</label>
-        <input type="vemail" name="vemail" id="vemail" required/>
-        <?php if(isset($vemailerror)) echo '<font color="red"> * Email addresses do not match.</font>'; ?>
-        <br>
+        <div class="form-group">
+          <label for="email" class="col-sm-2 control-label">Email</label>
+          <div class="col-sm-10">
+            <input type="email" name="email" id="email" class="form-control" placeholder="Enter Email" required/>
+            <?php if(isset($emailerror)) echo '<font color="red"> * This email has already been registered.</font>'; ?>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="vemail" class="col-sm-2 control-label">Verify Email</label>
+          <div class="col-sm-10">
+            <input type="vemail" name="vemail" id="vemail" class="form-control" placeholder="Re-enter Email" required/>
+            <?php if(isset($vemailerror)) echo '<font color="red"> * Email addresses do not match.</font>'; ?>
+          </div>
+        </div>
 
-        <input type="hidden" name="sToken" value="<?php echo htmlspecialchars($token) ?>" />
-        <?php if(isset($tokenerror)) echo '<font color="red"> * There was an error submitting the form. Please resubmit.</font>'; ?>
-
-
-        <input type="submit" name="button" id="button" value="Submit" />
-    </form>
+          <input type="hidden" name="sToken" value="<?php echo htmlspecialchars($token) ?>" />
+          <?php if(isset($tokenerror)) echo '<font color="red"> * There was an error submitting the form. Please resubmit.</font>'; ?>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <input type="submit" name="button" id="button" class="btn btn-default" value="Submit" />
+          </div>
+        </div>
+      </form>
+    </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

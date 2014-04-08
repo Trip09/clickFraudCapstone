@@ -91,7 +91,7 @@ function checkPasswd($password1, $password2){
 	$hasUpperCase = preg_match("/[A-Z]/", $password1);
 	$hasLowerCase = preg_match("/[a-z]/", $password1);
 	$hasNumbers = preg_match("/[0-9]/", $password1);
-	$hasNonalphas = preg_match("/[!#$%&\? ]/", $password1);
+	$hasNonalphas = preg_match("/[!#$%&\?_ ]/", $password1);
 
 	if ($hasUpperCase + $hasLowerCase + $hasNumbers + $hasNonalphas < 3)
 	{

@@ -8,9 +8,9 @@ if( !isset($_SESSION) ) {
 // Login Form.
 // user is loggeg out.
 $logged_out = '<label for="username">Username</label>
-        <input type="text" name="username" id="username" />
+        <input type="text" name="username" id="username" class="form-control" placeholder="Enter Name" />
           <label for="password">Password</label>
-        <input type="password" name="password" id="password" />
+        <input type="password" name="password" id="password" class="form-control" placeholder="Enter Password" />
         </div>
         <input type="submit" class="btn btn-sm btn-default"
         name="button" id="button" value="Submit"/>';
@@ -30,7 +30,7 @@ if( $_GET['login'] == 'logout' ){             // User requests logout
 } else if(  $_GET['login'] == 'bad_password') {// User password incorrect
   $form = $logged_out;
 } else {
-  echo '<h1>NO LOGIN</h1> ';
+  // echo '<h1>NO LOGIN</h1> ';
   $form = $logged_out;
 };
 
@@ -46,14 +46,13 @@ echo '
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Brand</a>
+      <a class="navbar-brand" href="index.php">TruClick - Click Fraud Detection</a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Home</a></li>
         <li><a href="#">About</a></li>
-       <li><a href="#">About</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dashboard <b class="caret"></b></a>
           <ul class="dropdown-menu">
