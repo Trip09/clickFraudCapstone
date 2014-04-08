@@ -87,7 +87,7 @@ our solution will allow organizations to better utilize their advertising budget
 
 
 ### Staging and Production Enviroments
-- The testing environment can be accessed at [click-fraud] (http://149.166.29.173/click-fraud).
+- The testing environment can be accessed at [click-fraud] (http://149.166.29.173/click-fraud/clientPage/).
 - git is enabled on the server for code updates from our private repository.
 - Use PuTTY or similar client to SSH into the server to issue commands and create a tunnel for access to phpmyadmin.
 - WinSCP or any other client can be used to transfer files to and from our development environment.
