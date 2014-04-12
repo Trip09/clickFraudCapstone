@@ -16,7 +16,7 @@ if (mysqli_connect_errno() ){
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-$hash = hash('sha256', $password1);
+// $hash = hash('sha256', $password1);
 
 // Define functions...
 function createSalt()
@@ -33,6 +33,12 @@ function checkToken($secretToken, $sessionToken){
 	}
 
 	return 1;
+}
+
+// email validation
+function isValidEmail($email) {
+    return filter_var($email, FILTER_VALIDATE_EMAIL) 
+        && preg_match('/@.+\./', $email);
 }
 
 function checkUsername($username, $conn){
@@ -54,8 +60,8 @@ function checkUsername($username, $conn){
 
 function checkEmail($email, $vemail, $conn){
 	// check if email exists in the database
-	$email = mysqli_escape_string();
-	$vemail = mysqli_escape_string();
+	// $email = mysqli_escape_string();
+	// $vemail = mysqli_escape_string();
 	$query = "SELECT * FROM member WHERE email = '$email';";
 	$result = mysqli_query($conn, $query);
 
@@ -65,11 +71,17 @@ function checkEmail($email, $vemail, $conn){
 		header('Location: registration.php?error=2');
 	}
 
+	$validEmail = isValidEmail($email);
+	if(!($validEmail)){
+		header('Location: registration.php?error=2');
+	}
+
 	// check if email is unique in the database
 	if(mysqli_num_rows($result) != 0)
 	{
 		$_SESSION['error'] = true;
 		header('Location: registration.php?error=3');
+		return 0;
 	}
 	// else email is unique
 	return 1;
@@ -109,9 +121,10 @@ $validationResult = checkToken($sToken, $_SESSION['token']) + checkUsername($use
 // Behavior:
 //		When email fails to validate, the INSERT SQL statement is still running and creating a new entry in the user table
 if($validationResult == 4){
-
+	
+	$hash = hash('sha256', $password1);
 	$salt = createSalt();
-	$password = hash('sha256', $salt . $hash);
+	$password = $salt . $hash;
 
 	$username = mysqli_real_escape_string($conn, $username);
 
@@ -121,6 +134,7 @@ if($validationResult == 4){
 
 	// echo  "query sucess <br>";
 	// Redirect to page thanking the user for registering
+	header('Location: dashboard.php');
 
 }
 

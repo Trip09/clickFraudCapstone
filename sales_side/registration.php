@@ -1,7 +1,12 @@
 <?php
 
 /* Start session: */
-session_start();
+if( !isset($_SESSION) ) {
+  session_start();
+  $_SESSION['login'] = false;
+} else { 
+  session_start();
+}
 
 /* Generate Synchronizer Token: */
 /* Temporary INSECURE method to generate a session token: */

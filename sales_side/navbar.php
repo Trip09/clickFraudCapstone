@@ -3,6 +3,8 @@
 if( !isset($_SESSION) ) {
   session_start();
   $_SESSION['login'] = false;
+} else { 
+  session_start();
 }
 
 // Login Form.
@@ -16,18 +18,16 @@ $logged_out = '<label for="username">Username</label>
         name="button" id="button" value="Submit"/>';
 
 // user is logged in.
-$logged_in = '<p id="welcome-message">Welcome, '.$_SESSION['username'] 
-        .'</p></div>
-        <input type="submit" class="btn btn-sm btn-defaul:dt" 
+$logged_in = '<h4 id="welcome-message">Welcome, '.$_SESSION['username'] 
+        .'</h4></div>
+        <input type="submit" class="btn btn-sm btn-default" 
         name="button" id="button" value="Logout" />';
 
 if( $_GET['login'] == 'logout' ){             // User requests logout
   $_SESSION['login'] = false;
 } else if( $_SESSION['login'] == true) {      // Valid Login
   $form = $logged_in;
-} else if( $_GET['login'] == 'bad_user'){     // User login name not found.
-  $form = $logged_out;
-} else if(  $_GET['login'] == 'bad_password') {// User password incorrect
+} else if( $_GET['login'] == 'error'){     // User login name not found.
   $form = $logged_out;
 } else {
   // echo '<h1>NO LOGIN</h1> ';
@@ -88,6 +88,7 @@ echo '
   </nav>
 
   ';
+
 
 ?>
 
