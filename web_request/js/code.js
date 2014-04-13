@@ -26,17 +26,18 @@ var Driver = function(){
  */
 var getSystemFonts =  function(){
   var fonts = [];           /* Array of fonts to test again */
-  var detected = ' ';       /* String fonts found to be in the system */
+  var detected = '';       /* String fonts found to be in the system */
   var d = new Detector();
 
   // TODO: Add more fonts.
   fonts.push('Verdana');
   fonts.push('Arial');
+  fonts.push('Papyrus');
 
   // Builds string of fonts in the system.
   for(var i = 0; i < fonts.lenght; i++){
     if( d.detect(fonts[i]) )
-      detected = detected + fonts[i];
+      detected += 'font' + i + ':' + fonts[i];
     else
       ;//Do nothing
   }
@@ -112,16 +113,14 @@ var Detector = function() {
     this.detect = detect;
 };
 
-/* getCookieEnable
+/* getCookieEnabled
  * Returns 1 if cookies are enabled, and 0 if not.
  */
-var getCookieEnable = function(){
-
+var getCookieEnabled = function(){
   if( navigator.cookieEnabled ){
     return 1;
   } else
     return 0;
-
 };
 
 /* getScreenSize
