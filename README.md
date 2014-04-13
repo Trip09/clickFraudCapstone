@@ -81,9 +81,11 @@ our solution will allow organizations to better utilize their advertising budget
 - [UCI ML Repository](http://archive.ics.uci.edu/ml/) 
   * Example of datasets.
 - [Weka 3 - Data Mining Software in Java](http://www.cs.waikato.ac.nz/ml/weka/).
-  * Sofware that does the number crunching for us.
+  * Software that does the number crunching for us.
   * [Very good weka tutorial on classification](http://machinelearningmastery.com/how-to-run-your-first-classifier-in-weka/)
   * [Data Format for Weka](http://www.cs.waikato.ac.nz/ml/weka/arff.html)
+- [FINGERPRINTING](https://panopticlick.eff.org)
+  * [Get all system fonts](http://www.lalit.org/lab/javascript-css-font-detect/)
 
 
 ### Staging and Production Enviroments
