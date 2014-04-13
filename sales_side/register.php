@@ -53,6 +53,7 @@ function checkUsername($username, $conn){
 	{
 		$_SESSION['error'] = true;
 		header('Location: registration.php?error=1'); // use _GET over on the registration.php page
+		exit();
 	}
 
 	return 1;
@@ -69,11 +70,13 @@ function checkEmail($email, $vemail, $conn){
 	if($email != $vemail){
 		$_SESSION['error'] = true;
 		header('Location: registration.php?error=2');
+		exit();
 	}
 
 	$validEmail = isValidEmail($email);
 	if(!($validEmail)){
 		header('Location: registration.php?error=2');
+		exit();
 	}
 
 	// check if email is unique in the database
@@ -81,7 +84,7 @@ function checkEmail($email, $vemail, $conn){
 	{
 		$_SESSION['error'] = true;
 		header('Location: registration.php?error=3');
-		return 0;
+		exit();
 	}
 	// else email is unique
 	return 1;
@@ -93,11 +96,13 @@ function checkPasswd($password1, $password2){
 		$_SESSION['error'] = true;
 		// echo " Please verify that your passwords match. ";
 		header('Location: registration.php?error=5');
+		exit();
 	}
 
 	// verify password meets complexity -- complexity = min. 12 characters, etc
 	if (strlen($password1) < 12){
 		header('Location: registration.php?error=4');
+		exit();
 	}
 
 	$hasUpperCase = preg_match("/[A-Z]/", $password1);
@@ -109,6 +114,7 @@ function checkPasswd($password1, $password2){
 	{
 		$_SESSION['error'] = true;
 		header('Location: registration.php?error=4');
+		exit();
 	}
 	return 1;
 }

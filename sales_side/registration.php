@@ -112,7 +112,12 @@ if(isset($errorid)){
           <label for="password" class="col-sm-2 control-label">Password</label>
           <div class="col-sm-10">
             <input type="password" name="password" id="password" class="form-control" placeholder="Enter Password" required/>
-            <?php if(isset($pwderror)) echo '<font color="red"> * Passwords must be more than 12 characters long and contain three of the following: <br>1)At least one uppercase letter<br>2) At least one lowercase letter<br>3) A number<br>4) A symbol such as ! # $ % & \ ? or (space)</font>'; ?>
+            <?php 
+            if(isset($pwderror)) {
+              echo '<font color="red"> * Passwords must be more than 12 characters long and contain three of the following: <br>1)At least one uppercase letter<br>2) At least one lowercase letter<br>3) A number<br>4) A symbol such as ! # $ % & \ ? or (space)</font>';
+            } else {
+              echo 'Passwords must be more than 12 characters long and contain three of the following: <br>1)At least one uppercase letter<br>2) At least one lowercase letter<br>3) A number<br>4) A symbol such as ! # $ % & \ ? or (space)</font>';}
+            ?>
           </div>
         </div>
         <div class="form-group">
@@ -143,6 +148,7 @@ if(isset($errorid)){
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
             <input type="submit" name="button" id="button" class="btn btn-default" value="Submit" />
+            <a class="btn btn-default" href="http://149.166.29.173/sales_side/index.php" role="button">Cancel</a>
           </div>
         </div>
       </form>
