@@ -134,7 +134,7 @@ if($validationResult == 4){
 
 	// echo  "query sucess <br>";
 	// Redirect to page thanking the user for registering
-	header('Location: dashboard.php');
+	header('Location: thanks.php');
 
 }
 

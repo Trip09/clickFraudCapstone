@@ -1,10 +1,12 @@
 <?php
-if( !isset($_SESSION) ) {
-  session_start();
-  $_SESSION['login'] = false;
-} else { 
-  session_start();
-}
+session_start();
+// if( !isset($_SESSION) ) {
+//   session_start();
+//   $_SESSION['login'] = false;
+// } else { 
+//   session_start();
+// }
+
 ?>
 
 <!DOCTYPE html>

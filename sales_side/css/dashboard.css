@@ -19,6 +19,10 @@ body {
   margin-top:65px;
 }
 
+.navbar{
+  z-index: 100;
+}
+
 
 /*
  * Global add-ons
@@ -69,6 +73,9 @@ body {
   background-color: #428bca;
 }
 
+.nav>li>a:hover{
+  color: #428BCA;
+}
 
 /*
  * Main content
