@@ -10,15 +10,14 @@ var Driver = function(){
                   'httpRefer': document.referrer,
                   'curretAddrs': document.URL,
                   'pluginDetails' : getPlugins(),
-                  'timeZone' : getTimeZone(),
-                  'screenSize' :getScreenSize(),
+                  'timeZone' :  getTimeZone(),
+                  'screenSize' : getScreenSize(),
                   'cookieEnabled' : getCookieEnabled(),
                   'systemFonts' : getSystemFonts()
                 },
                 function(){
                       alert('callback');
                 });
-
 }
 
 /* getSystemFonts
@@ -35,7 +34,7 @@ var getSystemFonts =  function(){
   fonts.push('Arial');
 
   // Builds string of fonts in the system.
-  for(var i = 0; i < fonts.lenghts; i++){
+  for(var i = 0; i < fonts.lenght; i++){
     if( d.detect(fonts[i]) )
       detected = detected + fonts[i];
     else
@@ -117,7 +116,12 @@ var Detector = function() {
  * Returns 1 if cookies are enabled, and 0 if not.
  */
 var getCookieEnable = function(){
-   return (navigator.cookieEnabled)?1:0;
+
+  if( navigator.cookieEnabled ){
+    return 1;
+  } else
+    return 0;
+
 };
 
 /* getScreenSize
@@ -126,7 +130,7 @@ var getCookieEnable = function(){
 var getScreenSize = function(){
   var height = screen.height;
   var width = screen.width;
-  var pixel = creen.pixelDepth;
+  var pixel = screen.pixelDepth;
 
  return height + "x" + width + "x" + pixel;
 }
