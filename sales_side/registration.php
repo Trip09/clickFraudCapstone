@@ -1,12 +1,13 @@
 <?php
 
 /* Start session: */
-if( !isset($_SESSION) ) {
-  session_start();
-  $_SESSION['login'] = false;
-} else { 
-  session_start();
-}
+session_start();
+// if( !isset($_SESSION) ) {
+//   session_start();
+//   $_SESSION['login'] = false;
+// } else { 
+//   session_start();
+// }
 
 /* Generate Synchronizer Token: */
 /* Temporary INSECURE method to generate a session token: */
@@ -97,6 +98,7 @@ if(isset($errorid)){
     <!-- Register Form -->
     <div id="regForm">
       <h1 id="reg">Register</h1>
+      <hr>
       <form role="form" class="form-horizontal" id="form1" name="form1" method="post" action="register.php">
         <div class="form-group">
           <label for="username" class="col-sm-2 control-label">Username</label>

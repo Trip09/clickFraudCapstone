@@ -13,18 +13,25 @@
 /* LOGIN
  * TODO: BRYDEN -> Close connections!
  */
+// Initializes user session
+session_start();
+
+if (isset($_POST['button']) and $_POST['button'] == 'Logout')
+{
+  session_start();
+  unset($_SESSION['username']);
+  unset($_SESSION['error']);
+  unset($_SESSION['login']);
+  header('Location: http://149.166.29.173/sales_side/goodbye.php'); 
+  exit();
+}
+
 
 // Retrieve Form Data
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-// Initializes user session
-if( !isset($_SESSION) ) {
-  session_start();
-  $_SESSION['login'] = false;
-} else { 
-  session_start();
-}
+
 // echo " username: " . $username;
 // echo " password: " . $password;
 

@@ -2,6 +2,8 @@
 session_start();
 ?>
 
+<!-- TODO: CHange active state for the lefthand navigation menu -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -39,25 +41,14 @@ session_start();
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Overview</a></li>
+            <li class="active"><a href="http://149.166.29.173/sales_side/dashboard.php">Dashboard Home</a></li>
+            <li><a href="http://149.166.29.173/sales_side/tag.php">Tag Management</a></li>
             <li><a href="#">Reports</a></li>
             <li><a href="#">Analytics</a></li>
-            <li><a href="#">Export</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">Nav item</a></li>
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
-            <li><a href="">More navigation</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
+            <li><a href="#">Tag</a></li>
           </ul>
         </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="z-index: 0;">
           <h1 class="page-header">Dashboard</h1>
 
           <div class="row placeholders">
