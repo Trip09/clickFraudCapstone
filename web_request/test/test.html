@@ -1,17 +1,28 @@
+<!--- 
+  This is an example of a javascript inject. It is the code tha is provided
+  to customer, and it execute our javascript file on their page.
+
+  It simply writes a <script></script> tag with our strip.js file being written to it.
+-->
+
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>Cross domain data sending through a gif</title>
-    <script type="text/javascript" src="../js/code.js"></script>
 </head>
 <body>
-    <a id="testlink" href="#">Make gif request!</a>
-     <script type="text/javascript">
 
-        alert('starting test');
-        var d = new Driver;
+ <!-- Writes our write to the page -->
+ <script type="text/javascript">
+  var stripJsHost = "../js/code.js";
+  document.write('\x3Cscript type="text/javascript" src="' + stripJsHost +'">\x3C/script>');
+ </script>
 
-    </script>
+ <!-- Executed the script-->
+ <script type="text/javascript">
+    var clientTagId = '9';
+    var d = new Driver(clientTagId);
+  </script>
 </body>
 </html>
