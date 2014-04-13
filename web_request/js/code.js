@@ -4,9 +4,10 @@
  *
  */
 
-var Driver = function(){
+var Driver = function(tag){
               GifRequest.request({
                   //Set all parameters
+                  'tag' : tag,
                   'httpRefer': document.referrer,
                   'curretAddrs': document.URL,
                   'pluginDetails' : getPlugins(),
@@ -30,16 +31,109 @@ var getSystemFonts =  function(){
   var d = new Detector();
 
   // TODO: Add more fonts.
-  fonts.push('Verdana');
-  fonts.push('Arial');
-  fonts.push('Papyrus');
+      fonts.push("cursive");
+	    fonts.push("monospace");
+	    fonts.push("serif");
+	    fonts.push("sans-serif");
+	    fonts.push("fantasy");
+	    fonts.push("default");
+	    fonts.push("Arial");
+	    fonts.push("Arial Black");
+	    fonts.push("Arial Narrow");
+	    fonts.push("Arial Rounded MT Bold");
+	    fonts.push("Bookman Old Style");
+	    fonts.push("Bradley Hand ITC");
+	    fonts.push("Century");
+	    fonts.push("Century Gothic");
+	    fonts.push("Comic Sans MS");
+	    fonts.push("Courier");
+	    fonts.push("Courier New");
+	    fonts.push("Georgia");
+	    fonts.push("Gentium");
+	    fonts.push("Impact");
+	    fonts.push("King");
+	    fonts.push("Lucida Console");
+	    fonts.push("Lalit");
+	    fonts.push("Modena");
+	    fonts.push("Monotype Corsiva");
+	    fonts.push("Papyrus");
+	    fonts.push("Tahoma");
+	    fonts.push("TeX");
+	    fonts.push("Times");
+	    fonts.push("Times New Roman");
+	    fonts.push("Trebuchet MS");
+	    fonts.push("Verdana");
+	    fonts.push("Verona");
+      fonts.push("Lucida");
+      fonts.push("Lucida Arrows");
+      fonts.push("Lucida Blackletter");
+      fonts.push("Lucida Bright");
+      fonts.push("Lucida Casual");
+      fonts.push("Lucida Console");
+      fonts.push("Lucida Fax");
+      fonts.push("Lucida Math");
+      fonts.push("Lucida OpenType");
+      fonts.push("Lucida Sans Unicode");
+      fonts.push("Windings");
+      fonts.push("Webdings");
+      fonts.push("MS Serif");
+      fonts.push("Georgia");
+      fonts.push("Impact");
+      fonts.push("Ubuntu Light");
+      fonts.push("Ubuntu Medium");
+      fonts.push("Ubuntu Regular");
+      fonts.push("Ubuntu Regular Italic");
+      fonts.push("Adelle");
+      fonts.push("Nightmare Hero Regular");
+      fonts.push("New Garden Light");
+      fonts.push("One Fell Swoop Regular");
+      fonts.push("Taco Morden Regular");
+      fonts.push("Baskerville");
+
+      //iOS Fonts
+      fonts.push("AppleSDGothicNeo-Thin");
+      fonts.push("AppleSDGothicNeo-Light");
+      fonts.push("AppleSDGothicNeo-Regular");
+      fonts.push("AppleSDGothicNeo-Medium");
+      fonts.push("AppleSDGothicNeo-SemiBold");
+      fonts.push("AppleSDGothicNeo-Bold");
+      fonts.push("AppleSDGothicNeo-Medium");
+      fonts.push("Copperplate");
+      fonts.push("Copperplate-Bold");
+      fonts.push("Copperplate-Light");
+      fonts.push("Chalkduster");
+      fonts.push("Avenir-LightOblique");
+      fonts.push("Avenir-Medium");
+      fonts.push("Avenir-MediumOblique");	
+      fonts.push("Avenir-Oblique");	
+      fonts.push("Avenir-Roman");
+
+      // MAC OS X Lion Fonts
+      fonts.push("AppleGothic");
+      fonts.push("AquaKana");
+      fonts.push("Courier");
+      fonts.push("Geeza Pro Bold");
+      fonts.push("Geeza Pro");
+      fonts.push("Geneva");
+      fonts.push("HelveLTMM");
+
+      //Linux?
+      fonts.push("Liberation Serif");
+      fonts.push("Liberation Mono");
+
+      // Some very unique fonts
+      fonts.push("Canon");
+      fonts.push("Blade Runner Movie Font");
+      fonts.push("Pokemon Normal");
+      fonts.push("BTSE + PS2 FONT")
 
   // Builds string of fonts in the system.
-  for(var i = 0; i < fonts.lenght; i++){
-    if( d.detect(fonts[i]) )
+  for(var i = 0; i < fonts.length; i++){
+    if( d.detect(fonts[i]) ){
       detected += 'font' + i + ':' + fonts[i];
-    else
-      ;//Do nothing
+    } else {
+      ;//Do nothing;
+    }
   }
 
   return detected;
@@ -175,7 +269,7 @@ var GifRequest = function(){
         */
         var param_str = "?";
         for(key in param_arr){
-            param_str += key + "=" + param_arr[key] + "&";
+            param_str += key + "=" + encodeURIComponent(param_arr[key]) + "&";
         }
 
         param_str += "timestamp=" + getTimeStamp();
@@ -199,7 +293,7 @@ var GifRequest = function(){
              */
             alert('make a gif request');
             var req_img = new Image();
-            req_img.src=url_base + gif_name + getParamString(params);
+            req_img.src=url_base + gif_name +  getParamString(params);
             if(callback){
                 alert('gif request complete');
                 req_img.onload = callback; 
