@@ -28,30 +28,46 @@ if(isset($_GET["cID"])) echo "cID is set and the value is: " . $_GET["cID"] . "\
  *   & others. Please see js/Code.js
  */
 $query = "INSERT INTO clicks (
- REMOTE_ADDR, HTTP_X_FORWARDED_FOR, GATEWAY_INTERFACE, SERVER_ADDR, SERVER_SOFTWARE, SERVER_PROTOCOL ,
-  REQUEST_METHOD, REQUEST_TIME, REQUEST_TIME_FLOAT, QUERY_STRING, HTTP_ACCEPT_CHARSET, HTTP_ACCEPT_ENCODING,
-  HTTP_ACCEPT_LANGUAGE, HTTP_CONNECTION , HTTP_HOST, HTTP_REFERER, HTTP_USER_AGENT , HTTPS) VALUES (
-    '$_SERVER[REMOTE_ADDR]',
-    '$_SERVER[HTTP_X_FORWARDED_FOR]', 
-    '$_SERVER[GATEWAY_INTERFACE]' ,
-    '$_SERVER[SERVER_ADDR]' ,
-    '$_SERVER[SERVER_SOFTWARE]', 
-    '$_SERVER[SERVER_PROTOCOL]', 
-    '$_SERVER[REQUEST_METHOD]' ,
-    '$_SERVER[REQUEST_TIME]' ,
-    '$_SERVER[REQUEST_TIME_FLOAT]' ,
-    '$_SERVER[QUERY_STRING]', 
-    '$_SERVER[HTTP_ACCEPT_CHARSET]' ,
-    '$_SERVER[HTTP_ACCEPT_ENCODING]' ,
-    '$_SERVER[HTTP_ACCEPT_LANGUAGE]' ,
-    '$_SERVER[HTTP_CONNECTION]' ,
-    '$_SERVER[HTTP_HOST]',
-    '$_SERVER[HTTP_REFERER]' ,
-    '$_SERVER[HTTP_USER_AGENT]' ,
-    '$_SERVER[HTTPS]',);";
+ REMOTE_ADDR, HTTP_X_FORWARDED_FOR, HTTP_HOST, HTTP_REFERER ,
+  HTTP_USER_AGENT, HTTP_ACCEPT_LANGUAGE, HTTP_ACCEPT_ENCODING, HTTP_ACCEPT_CHARSET,
+  HTTP_ACCEPT, REQUEST_METHOD, REQUEST_TIME, REQUEST_TIME_FLOAT, HTTP_REFER, CURRENT_ADDR,
+  PLUGIN_DETAILS, TIME_ZONE, SCREEN_SIZE, COOKIE_ENABLED, SYSTEM_FONTS, TIME_STAMP, TAG) VALUES (
+        '$_SERVER[REMOTE_ADDR]',
+        '$_SERVER[HTTP_X_FORWARDED_FOR]',
+        '$_SERVER[HTTP_HOST]',
+        '$_SERVER[HTTP_REFERER]', 
+        '$_SERVER[HTTP_USER_AGENT]' ,
+        '$_SERVER[HTTP_ACCEPT_LANGUAGE]' ,
+        '$_SERVER[HTTP_ACCEPT_ENCODING]' ,
+        '$_SERVER[HTTP_ACCEPT_CHARSET]' ,
+        '$_SERVER[HTTP_ACCEPT]',
+        '$_SERVER[REQUEST_METHOD]' ,
+        '$_SERVER[REQUEST_TIME]' ,
+        '$_SERVER[REQUEST_TIME_FLOAT]',
+        '$_GET[httpRefer]',
+        '$_GET[curretAddrs]',
+        '$_GET[pluginDetails]',
+        '$_GET[timeZone]',
+        '$_GET[screenSize]',
+        '$_GET[cookieEnabled]',
+        '$_GET[systemFonts]',
+        '$_GET[timestamp]',
+        '$_GET[tag]')";
 
 // Executes MySQL Query
 $result = mysqli_query($conn, $query);
+
+ $myFile = "console.txt";
+ $fh = fopen($myFile, 'a') or die("can't open file");
+
+
+if (!$result) {
+  fwrite($fh,"error2:".mysqli_error($result) ."\n");
+}
+if (mysqli_connect_errno()) {
+    fwrite($fh,"bad con:".mysqli_error($result) ."\n");
+}
+  fclose($fh);
 
 echo  "query sucess <br>";
 
@@ -63,7 +79,7 @@ echo  "query sucess <br>";
  */
 $myFile = "log.txt";
 $fh = fopen($myFile, 'a') or die("can't open file");
-fwrite($fh, serialize($_GET)."\n");
+fwrite($fh, $_GET['systemFonts']."\n");
 fclose($fh);
 
 /**
