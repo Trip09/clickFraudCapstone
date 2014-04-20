@@ -89,7 +89,7 @@ if($_SERVER['PHP_SELF'] == '/sales_side/management.php'){
 				<tr>
 					<td></td>
 					<td>'. $rownumber .'</td>
-					<td><code>http://149.166.29.173/web_request/php/gif_processing.php?tag='. $results_array[$i]['tag_id'] .'</td>
+					<td><code>'. htmlspecialchars("<img src=\"http://149.166.29.173/web_request/php/gif_processing.php?tag=") . $results_array[$i]['tag_id'] . htmlspecialchars("\" height=\"1\" width=\"1\">") . '</code></td>
 					<td>'.htmlspecialchars($results_array[$i]['description']).'</td>
 				</tr>
 				';

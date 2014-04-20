@@ -27,6 +27,9 @@ if(isset($_GET["cID"])) echo "cID is set and the value is: " . $_GET["cID"] . "\
  *   pluginDetails
  *   & others. Please see js/Code.js
  */
+
+$clienttag = $_GET['tag'];
+
 $query = "INSERT INTO clicks (
  REMOTE_ADDR, HTTP_X_FORWARDED_FOR, HTTP_HOST, HTTP_REFERER ,
   HTTP_USER_AGENT, HTTP_ACCEPT_LANGUAGE, HTTP_ACCEPT_ENCODING, HTTP_ACCEPT_CHARSET,
@@ -52,7 +55,7 @@ $query = "INSERT INTO clicks (
         '$_GET[cookieEnabled]',
         '$_GET[systemFonts]',
         '$_GET[timestamp]',
-        '$_GET['tag']')";
+        '$clienttag')";
 
 // Executes MySQL Query
 $result = mysqli_query($conn, $query);
@@ -69,7 +72,7 @@ if (mysqli_connect_errno()) {
 }
   fclose($fh);
 
-echo  "query sucess <br>";
+// echo  "query sucess <br>";
 
 /**
  *
@@ -86,5 +89,11 @@ fclose($fh);
  * It now returns the gif to the browser
  *
  */ 
-header('Content-type: image/gif'); //Sets the header
-include('../img/babygif.gif'); // returns the gif
+mysqli_close($conn);
+http_response_code(200);
+// This code should not return any image since this image will be displayed on the client's site
+// header('Content-type: image/gif'); //Sets the header
+// include('../img/babygif.gif'); // returns the gif
+
+
+?>
