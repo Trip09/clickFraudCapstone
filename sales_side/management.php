@@ -24,14 +24,15 @@ function generateRandomTag() {
 }
 
 function checkDB($verifyUniqueID) {
+
 	// Check the database for uniqueness:
 	$conn = mysqli_connect('localhost', 'bitnami', 'click_fraud','click_fraud');
 	if (mysqli_connect_errno() ){
-		echo "Failed to connect to mysqli: " . mysqlii_connect_error();
+		echo "Failed to connect to mysqli: " . mysqli_connect_error();
 	}
 
 // Check if the tagID generated is unique
-	$query = "SELECT * FROM tags WHERE tagID = '$verifyUniqueID';";
+	$query = "SELECT * FROM tag_id WHERE tag_ID = '$verifyUniqueID';";
 	$result = mysqli_query($conn, $query);
 
 	if(mysqli_num_rows($result) != 0)
@@ -47,6 +48,7 @@ function checkDB($verifyUniqueID) {
 } // end checkDB($tag)
 
 // Generate unique tag for the customer if action=create
+$tag = '';
 if($_GET['action'] == 'create'){
 	$keepGoing = true;
 	// $tag = '';
@@ -82,8 +84,6 @@ if($_GET['action'] == 'create'){
 
 		<!-- Custom styles for this template -->
 		<link href="css/dashboard.css" rel="stylesheet">
-		<link href="css/tag.css" rel="stylesheet">
-
 
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
@@ -119,16 +119,36 @@ if($_GET['action'] == 'create'){
 						<form role="form" method="post" action="mgmtsubmit.php">
 							<div class="form-group">
 								<label for="description">Description</label>
-								<input class="form-control" id="description" placeholder="Enter a description, such as a site where this tag will be used">
-								<input type="hidden" name="tagID" value="<?php echo generateRandomTag() ?>" />
+								<input class="form-control" id="description" name="description" placeholder="Enter a description, such as a site where this tag will be used">
+								<p>The description will be used to identify this particular tag, so make this something unique!</p>
+								<input type="hidden" name="tagID" value="'. $tag . '" />
 								<input type="hidden" name="action" value="create" />
 							</div>
-
-							<button type="submit" class="btn btn-default">Submit</button>
+							<div id="dialog" title="Confirm delete">
+							<button type="submit" class="btn btn-primary">Submit</button>
 							<a class="btn btn-default" href="http://149.166.29.173/sales_side/tag.php" role="button">Cancel</a>
 						</form>
 					</div>';
+	} else if($_GET['action'] == 'delete'){	
+		echo '<h1 class="page-header">Delete tags</h1>
+						<form role="form" method="post" action="mgmtsubmit.php">
+							<input type="hidden" name="action" value="delete" />
+		';
+
+		include('table.php');
+
+		echo '
+							<p>Please confirm your selection before clicking the "Delete" button below!</p>
+							<button type="submit" class="btn btn-danger">Delete</button>
+							<a class="btn btn-default" href="http://149.166.29.173/sales_side/tag.php" role="button">Cancel</a>
+						</form>
+					</div>
+					';
+
+	} else {
+		header('Location: http://149.166.29.173/sales_side/tag.php');
 	}
+
 
 ?>
 
@@ -142,5 +162,6 @@ if($_GET['action'] == 'create'){
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/docs.min.js"></script>
+
 	</body>
 </html>

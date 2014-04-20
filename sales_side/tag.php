@@ -62,8 +62,12 @@ session_start();
 
           <div>
             <h2 class="sub-header">My Tags</h2>
+
+              <?php include "table.php" ?>
+
               <!-- <input type="submit" class="btn btn-large btn-primary" name="button" id="button" value="Submit"/> -->
               <a class="btn btn-large btn-primary" href="management.php?action=create">Create New Tag</a>
+              <a class="btn btn-large btn-danger" href="management.php?action=delete">Delete Tags</a>
 
           </div>
 
