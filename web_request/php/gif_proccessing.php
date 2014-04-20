@@ -52,7 +52,7 @@ $query = "INSERT INTO clicks (
         '$_GET[cookieEnabled]',
         '$_GET[systemFonts]',
         '$_GET[timestamp]',
-        '$_GET[tag]')";
+        '$_GET['tag']')";
 
 // Executes MySQL Query
 $result = mysqli_query($conn, $query);

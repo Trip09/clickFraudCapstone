@@ -61,6 +61,7 @@ TODO:
 */
 
 if($_SERVER['PHP_SELF'] == '/sales_side/management.php'){
+	// delete table
 	while($i < $rows){
 		$rownumber = $i + 1;
 		echo '
@@ -71,7 +72,7 @@ if($_SERVER['PHP_SELF'] == '/sales_side/management.php'){
 						</label>
 					</td>
 					<td>'. $rownumber .'</td>
-					<td><code>http://149.166.29.173/web_request/php/gif_processing.php?'. $results_array[$i]['tag_id'] .'</td>
+					<td><code>http://149.166.29.173/web_request/php/gif_processing.php?tag='. $results_array[$i]['tag_id'] .'</td>
 					<td>'.htmlspecialchars($results_array[$i]['description']).'</td>
 				</tr>
 				';
@@ -82,12 +83,13 @@ if($_SERVER['PHP_SELF'] == '/sales_side/management.php'){
 
 } else {
 	while($i < $rows){
+		// normal display table
 		$rownumber = $i + 1;
 		echo '
 				<tr>
 					<td></td>
 					<td>'. $rownumber .'</td>
-					<td><code>http://149.166.29.173/web_request/php/gif_processing.php?'. $results_array[$i]['tag_id'] .'</td>
+					<td><code>http://149.166.29.173/web_request/php/gif_processing.php?tag='. $results_array[$i]['tag_id'] .'</td>
 					<td>'.htmlspecialchars($results_array[$i]['description']).'</td>
 				</tr>
 				';
