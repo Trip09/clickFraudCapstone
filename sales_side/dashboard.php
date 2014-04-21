@@ -1,5 +1,12 @@
 <?php
 session_start();
+include 'session.php';
+
+if($_SESSION['login'] == false){
+  header('Location: index.php');
+}
+
+
 ?>
 
 <!-- TODO: CHange active state for the lefthand navigation menu -->

@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+
 // retrieve post variables
 $tag = $_POST['tagID'];
 $desc = $_POST['description'];
@@ -78,7 +79,9 @@ if($action == 'delete'){
 	}
 }
 
-// redirect back to tag.php
-// header('Location: tag.php')
+// if $action == 'edit'....
+
+// redirect back to tag.php if no action specified
+header('Location: management.php')
 
 ?>

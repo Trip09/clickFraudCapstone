@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+include 'session.php';
 
 // TODO: Add active class jazz later
 // function echoActiveClassIfRequestMatches($requestUri)

@@ -13,8 +13,11 @@
 /* LOGIN
  * TODO: BRYDEN -> Close connections!
  */
+
 // Initializes user session
 session_start();
+
+include 'session.php';
 
 if (isset($_POST['button']) and $_POST['button'] == 'Logout')
 {

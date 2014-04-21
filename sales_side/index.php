@@ -41,6 +41,37 @@ session_start();
     ================================================== -->
     <?php include "navbar.php" ?>
 
+    <?php 
+
+      if(isset($_GET['timeout'])){
+        // use jquery modal if there was a session timeout
+        echo '
+          <script type="text/javascript">
+              $(window).load(function(){
+                  $(\'#timeout\').modal(\'show\');
+              });
+          </script>
+
+          <div class="modal fade bs-example-modal-sm" id="timeout" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <h4 class="modal-title">Logged out</h4>
+                </div>
+                <div class="modal-body">
+                  Your session has been logged out due to 30 minutes of inactivity. Please log in again.
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        ';
+      }
+
+    ?>
 
     <!-- Carousel
     ================================================== -->
