@@ -54,7 +54,6 @@ include 'session.php';
             <li class="active"><a href="http://149.166.29.173/sales_side/tag.php">Tag Management</a></li>
             <li><a href="#">Reports</a></li>
             <li><a href="#">Analytics</a></li>
-            <li><a href="#">Tag</a></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="z-index: 0;">
@@ -66,6 +65,38 @@ include 'session.php';
               <?php include "table.php" ?>
 
               <!-- <input type="submit" class="btn btn-large btn-primary" name="button" id="button" value="Submit"/> -->
+              <?php
+                if(isset($_SESSION['delete']) && $_SESSION['delete']== 'true'){
+                  echo '
+                      <div class="alert alert-success fade in">
+                        <!-- <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> -->
+                        <p style="margin-bottom: 0">Tags deleted successfully.</p>
+                      </div>
+                  ';
+                  unset($_SESSION['delete']);
+                } else if (isset($_SESSION['create']) && $_SESSION['create'] == 'true'){
+                  echo '
+                      <div class="alert alert-success fade in">
+                        <!-- <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> -->
+                        <p style="margin-bottom: 0">Tag created successfully.</p>
+                      </div>
+                  ';
+                } else if (isset($_SESSION['create']) && $_SESSION['create'] == 'false'){
+                  echo '
+                      <div class="alert alert-danger fade in">
+                        <!-- <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> -->
+                        <p style="margin-bottom: 0">Error creating new tag. Please try again.</p>
+                      </div>
+                  ';
+                } else if(isset($_SESSION['delete']) && $_SESSION['delete'] == 'false'){
+                  echo '
+                      <div class="alert alert-danger fade in">
+                        <!-- <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> -->
+                        <p style="margin-bottom: 0">Tag deletion failed. Please try again.</p>
+                      </div>
+                  ';
+                }
+              ?>
               <a class="btn btn-large btn-primary" href="management.php?action=create">Create New Tag</a>
               <a class="btn btn-large btn-danger" href="management.php?action=delete">Delete Tags</a>
 

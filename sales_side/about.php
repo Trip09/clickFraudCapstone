@@ -43,7 +43,7 @@ include 'session.php';
       <h1>About Us</h1>
       <hr>
       <h2>Who We Are</h2>
-      <p>We are a team of three undergrad computer science students at IUPUI</p>
+      <p>We are a team of three undergrad computer science students at IUPUI.</p>
 
       <h2>Our Product</h2>
       <p>We have created a solution to maximize the return on advertising campaign investments. With our TruClick service, clients are able to view an in-depth analysis of advertisement traffic to their websites. We use custom machine learning techniques and models to determine the quality of traffic sent to a website from an advertisement.</p>

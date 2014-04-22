@@ -119,7 +119,7 @@ if($_GET['action'] == 'create'){
 						<form role="form" method="post" action="mgmtsubmit.php">
 							<div class="form-group">
 								<label for="description">Description</label>
-								<input class="form-control" id="description" name="description" placeholder="Enter a description, such as a site where this tag will be used">
+								<input class="form-control" id="description" name="description" placeholder="Enter a description, such as a site where this tag will be used" required>
 								<p>The description will be used to identify this particular tag, so make this something unique!</p>
 								<input type="hidden" name="tagID" value="'. $tag . '" />
 								<input type="hidden" name="action" value="create" />

@@ -7,11 +7,6 @@ $tag = $_POST['tagID'];
 $desc = $_POST['description'];
 $action = $_POST['action'];
 
-echo "Action: " . $action . "<br>";
-echo "Tag: " . $tag . "<br>";
-echo "Description: " . htmlspecialchars($desc) . "<br>";
-echo "Username: " . $_SESSION['username'] . "<br>";
-
 // $action == create OR $action == delete
 if($action == 'create'){
 	// do SQL query to add the tag to DB
@@ -33,9 +28,9 @@ if($action == 'create'){
 
 	$result = mysqli_query($conn, $query);
 	if(!$result){
-		echo "Could not run query.";
+		$_SESSION['create'] = 'false';
 		mysqli_close($conn);
-		echo "\n DB connection closed.";
+		header('Location: http://149.166.29.173/sales_side/tag.php');
 		exit;
 	}
 	$row = mysqli_fetch_row($result);
@@ -43,6 +38,7 @@ if($action == 'create'){
 
 	// insert into tag table
 	$insertquery = "INSERT INTO tag_id (user_id, tag_id, description) VALUES ('$customerID','$tag','$desc');";
+	$_SESSION['create'] = 'true';
 	header('Location: http://149.166.29.173/sales_side/tag.php');
 	mysqli_query($conn, $insertquery);
 	mysqli_close($conn);
@@ -65,16 +61,19 @@ if($action == 'delete'){
 			$deletequery = "DELETE FROM tag_id WHERE tag_id='$checkbox_tags';";
 			$result = mysqli_query($conn, $deletequery);
 			if(!$result){
-				echo "Could not run query.";
+				$_SESSION['delete'] = 'false';
 				mysqli_close($conn);
-				echo "<br> DB connection closed.";
+				header('Location: http://149.166.29.173/sales_side/tag.php');
 				exit;
 			}
+			$_SESSION['delete'] = 'true';
 			header('Location: http://149.166.29.173/sales_side/tag.php');
 			mysqli_close($conn);
 			// echo "This tag was checked: " . $checkbox_tags . "<br>";
 		}
 	} else {
+		$_SESSION['delete'] = 'false';
+		mysqli_close($conn);
 		header('Location: http://149.166.29.173/sales_side/management.php?action=delete');
 	}
 }

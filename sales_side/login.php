@@ -77,12 +77,15 @@ $hash = $userData['salt'] . hash('sha256', $password);
 if($hash != $userData['password']) // Incorrect password.
 {
   $_SESSION['login'] = false;
+  mysqli_close($conn);
   header('Location: index.php?login=error');
 }else{                             // Valid login.
   $_SESSION['username'] = $_POST['username'];
   $_SESSION['login'] = true;
+  mysqli_close($conn);
 	header('Location: dashboard.php');
 }
+
 ?>
 
 </body>

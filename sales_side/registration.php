@@ -99,6 +99,8 @@ if(isset($errorid)){
     <div id="regForm">
       <h1 id="reg">Register</h1>
       <hr>
+      <h3>Create a free account to see an analysis of the traffic to your site in just a few steps!</h3>
+      <br>
       <form role="form" class="form-horizontal" id="form1" name="form1" method="post" action="register.php">
         <div class="form-group">
           <label for="username" class="col-sm-2 control-label">Username</label>
@@ -147,7 +149,7 @@ if(isset($errorid)){
           <?php if(isset($tokenerror)) echo '<font color="red"> * There was an error submitting the form. Please resubmit.</font>'; ?>
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
-            <input type="submit" name="button" id="button" class="btn btn-default" value="Submit" />
+            <input type="submit" name="button" id="button" class="btn btn-primary" value="Submit" />
             <a class="btn btn-default" href="http://149.166.29.173/sales_side/index.php" role="button">Cancel</a>
           </div>
         </div>
