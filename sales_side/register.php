@@ -128,14 +128,18 @@ $validationResult = checkToken($sToken, $_SESSION['token']) + checkUsername($use
 //		When email fails to validate, the INSERT SQL statement is still running and creating a new entry in the user table
 if($validationResult == 4){
 	
-	$hash = hash('sha256', $password1);
+	// $hash = hash('sha256', $password1);
+	// $salt = createSalt();
+	// $password = $salt . $hash;
+
 	$salt = createSalt();
-	$password = $salt . $hash;
+	$password = $password1 . $salt;
+	$hash = hash('sha256', $password);
 
 	$username = mysqli_real_escape_string($conn, $username);
 
 	$query = "INSERT INTO member ( username, password, email, salt)
-	        VALUES ( '$username', '$password', '$email', '$salt');";
+	        VALUES ( '$username', '$hash', '$email', '$salt');";
 	$result = mysqli_query($conn, $query);
 
 	// Redirect to page thanking the user for registering

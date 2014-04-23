@@ -32,7 +32,7 @@ if (isset($_POST['button']) and $_POST['button'] == 'Logout')
 
 // Retrieve Form Data
 $username = $_POST['username'];
-$password = $_POST['password'];
+$inputpassword = $_POST['password'];
 
 // Database connection
 $conn = mysqli_connect('localhost', 'bitnami', 'click_fraud','click_fraud');
@@ -58,7 +58,8 @@ if(mysqli_num_rows($result) == 0) // User not found.
 // User exists, check for correct password.
 $userData = mysqli_fetch_array($result, MYSQL_BOTH);
 
-$hash = $userData['salt'] . hash('sha256', $password);
+$password = $inputpassword . $userData['salt'];
+$hash = hash('sha256', $password);
 
 if($hash != $userData['password']) // Incorrect password.
 {
