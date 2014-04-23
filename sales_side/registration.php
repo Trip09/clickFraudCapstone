@@ -19,6 +19,7 @@ $emailerror = NULL;
 $tokenerror = NULL;
 $pwderror = NULL;
 $vpwderror = NULL;
+$invaliduser = NULL;
 
 /* FINISH THE ERROR CASES FOR INVALID INPUT */
 // Use $_POST['nameoferror_error'] = 1
@@ -31,6 +32,7 @@ $vpwderror = NULL;
 // 4 = password does not meet complexity requirements
 // 5 = passwords do not match
 // 6 = token validation error
+// 7 = invalid username characters
 
 if(isset($errorid)){
   switch($errorid){
@@ -52,6 +54,8 @@ if(isset($errorid)){
     case 6:
       $tokenerror = 1;
       break;
+    case 7:
+      $invaliduser = 1;
     default:
 
   }
@@ -100,6 +104,7 @@ if(isset($errorid)){
           <div class="col-sm-10">
             <input type="text" name="username" id="username" class="form-control" placeholder="Enter Name" required/>
             <?php if(isset($usererror)) echo '<font color="red"> * Username already exists.</font>'; ?>
+            <?php if(isset($invaliduser)) echo '<font color="red"> * Username must only contain letters and numbers.</font>'; ?>
           </div>
         </div>
 

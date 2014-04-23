@@ -43,8 +43,21 @@ function isValidEmail($email) {
 
 function checkUsername($username, $conn){
 	// check if username meets requirements
+	// Regex matching for valid username:
+	echo $username . "<br>";
+	$hasApproved = preg_match('/^[a-zA-Z0-9]{3,30}$/', $username);
+	echo $hasApproved;
+
+	if (!($hasApproved))
+	{
+		$_SESSION['error'] = true;
+		header('Location: registration.php?error=7');
+		exit();
+	}
+
 	// sanitize input before querying the database
 	$username = mysqli_real_escape_string($conn, $username);
+	$username = strtolower($username);
 	$query = "SELECT * FROM member WHERE username = '$username';";
 	$result = mysqli_query($conn, $query);
 
@@ -143,7 +156,7 @@ if($validationResult == 4){
 	$result = mysqli_query($conn, $query);
 
 	// Redirect to page thanking the user for registering
-	header('Location: thanks.php');
+	// header('Location: thanks.php');
 
 }
 
