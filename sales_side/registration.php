@@ -2,12 +2,6 @@
 
 /* Start session: */
 session_start();
-// if( !isset($_SESSION) ) {
-//   session_start();
-//   $_SESSION['login'] = false;
-// } else { 
-//   session_start();
-// }
 
 /* Generate Synchronizer Token: */
 /* Temporary INSECURE method to generate a session token: */
@@ -16,7 +10,6 @@ $token = sha1(uniqid(microtime()));
 /* Set token as Session Token: */
 $_SESSION['token'] = $token;
 //$_SESSION['token_time'] = time(); /* Time since UNIX epoc time; see http://php.net/manual/en/function.time.php for more information */
-// echo "Token: $token";
 
 $errorid = $_GET['error'];
 

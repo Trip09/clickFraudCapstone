@@ -4,6 +4,7 @@ session_start();
 include 'session.php';
 
 $username = $_POST['username'];
+$username = strtolower($username);	// convert to lower case for the DB
 $password1 = $_POST['password'];
 $password2 = $_POST['veripass'];
 $email = $_POST['email'];
@@ -16,8 +17,6 @@ $conn = mysqli_connect('localhost', 'bitnami', 'click_fraud','click_fraud');
 if (mysqli_connect_errno() ){
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
-
-// $hash = hash('sha256', $password1);
 
 // Define functions...
 function createSalt()
@@ -139,7 +138,6 @@ if($validationResult == 4){
 	        VALUES ( '$username', '$password', '$email', '$salt');";
 	$result = mysqli_query($conn, $query);
 
-	// echo  "query sucess <br>";
 	// Redirect to page thanking the user for registering
 	header('Location: thanks.php');
 
