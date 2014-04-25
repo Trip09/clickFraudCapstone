@@ -105,7 +105,7 @@ if($_GET['action'] == 'create'){
 						<li class="active"><a href="http://149.166.29.173/sales_side/tag.php">Tag Management</a></li>
 						<li><a href="#">Reports</a></li>
 						<li><a href="#">Analytics</a></li>
-						<li><a href="#">Tag</a></li>
+						<li><a href="http://149.166.29.173/sales_side/account.php">Your Account</a></li>
 					</ul>
 				</div>
 				<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="z-index: 0;">
