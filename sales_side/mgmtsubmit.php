@@ -3,13 +3,14 @@
 session_start();
 
 // retrieve post variables
+$action = $_POST['action'];
+
 $tag = $_POST['tagID'];
 $desc = $_POST['description'];
-$action = $_POST['action'];
 
 // $action == create OR $action == delete
 if($action == 'create'){
-	// do SQL query to add the tag to DB
+// do SQL query to add the tag to DB
 
 	// Connect to DB:
 	$conn = mysqli_connect('localhost', 'bitnami', 'click_fraud','click_fraud');
@@ -42,9 +43,7 @@ if($action == 'create'){
 	header('Location: http://149.166.29.173/sales_side/tag.php');
 	mysqli_query($conn, $insertquery);
 	mysqli_close($conn);
-}
-
-if($action == 'delete'){
+} else if($action == 'delete'){
 	// do SQL query to remove from the DB using POST variables
 
 	// Connect to DB:
@@ -76,11 +75,42 @@ if($action == 'delete'){
 		mysqli_close($conn);
 		header('Location: http://149.166.29.173/sales_side/management.php?action=delete');
 	}
-}
+} else if($action == 'edit'){
 
-// if $action == 'edit'....
+	// Open connection
+	$conn = mysqli_connect('localhost', 'bitnami', 'click_fraud','click_fraud');
+	if (mysqli_connect_errno() ){
+		echo "Failed to connect to mysqli: " . mysqli_connect_error();
+	}
 
+	// Sanitize for SQLi
+	$username = $_SESSION['username'];	// I believe this variable has already been sanitized from login.php...
+	// $username = mysqli_real_escape_string($conn, $username);
+	// $desc = mysqli_real_escape_string($conn, $desc);
+	// $tag = mysqli_real_escape_string($conn, $tag);
+
+	// Update tag table with new description
+	echo "tag: " . $tag . "<br>";
+	echo "desc: " . $desc . "<br>";
+	echo "username: " . $username . "<br>"; // works
+	echo "action: " . $action . "<br>"; // works
+
+	$updatequery = "UPDATE tag_id SET description='$desc' WHERE tag_id = '$tag';";
+
+	$result = mysqli_query($conn, $updatequery);
+	if(!$result){
+		$_SESSION['edit'] = 'false';
+		mysqli_close($conn);
+		header('Location: http://149.166.29.173/sales_side/tag.php');
+		exit;
+	}
+
+	$_SESSION['edit'] = 'true';
+	// mysqli_query($conn, $updatequery);
+	mysqli_close($conn);
+	header('Location: http://149.166.29.173/sales_side/tag.php');
+} else {
 // redirect back to tag.php if no action specified
-header('Location: management.php')
-
+// header('Location: management.php')
+}
 ?>

@@ -21,11 +21,8 @@ include 'session.php';
 
 if (isset($_POST['button']) and $_POST['button'] == 'Logout')
 {
-  session_start();
-  unset($_SESSION['username']);
-  unset($_SESSION['error']);
-  unset($_SESSION['login']);
-  header('Location: http://149.166.29.173/sales_side/goodbye.php'); 
+  session_destroy();
+  header('Location: http://149.166.29.173/sales_side/goodbye.php');
   exit();
 }
 
@@ -68,7 +65,7 @@ if($hash != $userData['password']) // Incorrect password.
   header('Location: index.php?login=error');
 }else{                             // Valid login.
   // XSS HERE! $_POST['username'] is not sanitized
-  $_SESSION['username'] = $_POST['username'];
+  $_SESSION['username'] = htmlspecialchars($username);
   $_SESSION['login'] = true;
   mysqli_close($conn);
 	header('Location: dashboard.php');

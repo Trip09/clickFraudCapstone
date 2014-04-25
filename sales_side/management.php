@@ -113,7 +113,6 @@ if($_GET['action'] == 'create'){
 	
 	if($_GET['action'] == 'create'){
 
-		// echo generateRandomTag();
 		echo '<h1 class="page-header">Create a new tag</h1>
 					<div id="createTag">
 						<form role="form" method="post" action="mgmtsubmit.php">
@@ -144,6 +143,49 @@ if($_GET['action'] == 'create'){
 						</form>
 					</div>
 					';
+
+	} else if($_GET['action'] == 'edit'){
+		$editTag = $_GET['tag'];
+
+		// SQL query to display current tag description
+		$conn = mysqli_connect('localhost', 'bitnami', 'click_fraud','click_fraud');
+		if (mysqli_connect_errno() ){
+			echo "Failed to connect to mysqli: " . mysqli_connect_error();
+		}
+		// SQLi prevention by escaping the input from GET
+		$editTag = mysqli_real_escape_string($conn, $editTag);
+
+		$query = "SELECT * FROM tag_id WHERE tag_id = '$editTag';";
+
+		$result = mysqli_query($conn, $query);
+		if(!$result){
+			$_SESSION['edit'] = 'false';
+			mysqli_close($conn);
+			header('Location: http://149.166.29.173/sales_side/tag.php');
+			exit;
+		}
+
+		$row = mysqli_fetch_array($result, MYSQLI_NUM);
+		$currentDescription = $row[3]; // returns current description
+		$currentDescription = htmlspecialchars($currentDescription); // Sanitize input to prevent XSS
+		mysqli_close($conn);
+
+		echo '<h1 class="page-header">Edit Tag</h1>
+					<div id="editTag">
+						<form role="form" method="post" action="mgmtsubmit.php">
+							<div class="form-group">
+								<label for="currentDescription">Current description</label>
+								<p>' . $currentDescription . '</p>
+								<label for="newdescription">Edit description</label>
+								<input class="form-control" id="newdescription" name="newdescription" style="width: 40%" placeholder="Enter a new description">
+								<input type="hidden" name="newtag" value="'. $editTag . '" />
+								<input type="hidden" name="action" value="edit" />
+							</div>
+							<div id="dialog" title="Confirm delete">
+							<button type="submit" class="btn btn-primary">Submit Description</button>
+							<a class="btn btn-default" href="http://149.166.29.173/sales_side/tag.php" role="button">Cancel</a>
+						</form>
+					</div>';
 
 	} else {
 		header('Location: http://149.166.29.173/sales_side/tag.php');

@@ -54,6 +54,7 @@ include 'session.php';
             <li class="active"><a href="http://149.166.29.173/sales_side/tag.php">Tag Management</a></li>
             <li><a href="#">Reports</a></li>
             <li><a href="#">Analytics</a></li>
+            <li><a href="http://149.166.29.173/sales_side/account.php">Account Management</a></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="z-index: 0;">
@@ -70,7 +71,7 @@ include 'session.php';
                   echo '
                       <div class="alert alert-success fade in">
                         <!-- <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> -->
-                        <p style="margin-bottom: 0">Tags deleted successfully.</p>
+                        <p style="margin-bottom: 0">Delete successful.</p>
                       </div>
                   ';
                   unset($_SESSION['delete']);
@@ -81,6 +82,7 @@ include 'session.php';
                         <p style="margin-bottom: 0">Tag created successfully.</p>
                       </div>
                   ';
+                  unset($_SESSION['create']);
                 } else if (isset($_SESSION['create']) && $_SESSION['create'] == 'false'){
                   echo '
                       <div class="alert alert-danger fade in">
@@ -88,13 +90,31 @@ include 'session.php';
                         <p style="margin-bottom: 0">Error creating new tag. Please try again.</p>
                       </div>
                   ';
+                  unset($_SESSION['create']);
                 } else if(isset($_SESSION['delete']) && $_SESSION['delete'] == 'false'){
                   echo '
                       <div class="alert alert-danger fade in">
                         <!-- <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> -->
-                        <p style="margin-bottom: 0">Tag deletion failed. Please try again.</p>
+                        <p style="margin-bottom: 0">Delete failed. Please try again.</p>
                       </div>
                   ';
+                  unset($_SESSION['delete']);
+                } else if(isset($_SESSION['edit']) && $_SESSION['edit'] == 'true'){
+                  echo '
+                      <div class="alert alert-success fade in">
+                        <!-- <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> -->
+                        <p style="margin-bottom: 0">Description changed successfully.</p>
+                      </div>
+                  ';
+                  unset($_SESSION['edit']);
+                } else if(isset($_SESSION['edit']) && $_SESSION['edit'] == 'false'){
+                  echo '
+                      <div class="alert alert-danger fade in">
+                        <!-- <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> -->
+                        <p style="margin-bottom: 0">Error changing description. Try again.</p>
+                      </div>
+                  ';
+                  unset($_SESSION['edit']);
                 }
               ?>
               <a class="btn btn-large btn-primary" href="management.php?action=create">Create New Tag</a>
