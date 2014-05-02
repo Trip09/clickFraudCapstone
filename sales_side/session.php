@@ -1,6 +1,6 @@
 <?php
 
-// Session Management
+// Session Management Script
 
 session_start();
 
@@ -18,11 +18,9 @@ if(!isset($_SESSION['CREATED_TIME'])){
 if(isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)){
 	session_unset();
 	session_destroy();
-	// Maybe redirect to re-login page or something
-	header('Location: index.php?timeout=true'); // or something
+	header('Location: http://149.166.29.173/sales_side/index.php?timeout'); // or something
 } else{
 	$_SESSION['LAST_ACTIVITY'] = time();
 }
-
 
 ?>

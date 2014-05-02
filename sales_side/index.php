@@ -1,11 +1,6 @@
 <?php
+
 session_start();
-// if( !isset($_SESSION) ) {
-//   session_start();
-//   $_SESSION['login'] = false;
-// } else { 
-//   session_start();
-// }
 
 ?>
 
@@ -100,20 +95,10 @@ session_start();
             <div class="carousel-caption">
               <h1>Our Secret Sauce</h1>
               <p>We have analyzed millions of HTTP requests to generate accurate models to determine the authenticity of an ad click.</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+              <p><a class="btn btn-lg btn-primary" href="http://149.166.29.173/sales_side/about.php" role="button">Learn more</a></p>
             </div>
           </div>
         </div>
-<!--         <div class="item">
-          <img data-src="holder.js/900x500/auto/#555:#5a5a5a/text:Third slide">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>One more for good measure.</h1>
-              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
-            </div>
-          </div>
-        </div> -->
       </div>
       <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
       <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>

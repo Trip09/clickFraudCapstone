@@ -8,12 +8,13 @@ function echoActiveClassIfRequestMatches($requestUri)
 {
     $current_file_name = basename($_SERVER['REQUEST_URI'], ".php");
 
-    if ($current_file_name == $requestUri)
-        return 'class="active"';
+    if ($current_file_name == $requestUri){
+      return 'class="active"';
+    }        
 }
 
 // Login Form.
-// user is loggeg out.
+// user is logged out.
 $logged_out = '
             <input type="text" name="username" id="username" class="form-control" placeholder="Username" />
             <input type="password" name="password" id="password" class="form-control" placeholder="Password" />
@@ -27,9 +28,9 @@ $logged_out_error = '
     <input type="password" name="password" id="password" class="form-control" placeholder="Password" />
   </div>
   <input type="submit" class="btn btn-sm btn-primary" name="button" id="button" value="Submit"/>
-  <div class="alert alert-danger fade in" style="width: 300px; margin: 10px 0 0 0">
+  <div class="alert alert-danger fade in" style="width: 350px; margin: 10px 0 0 0">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-    <h4 style="margin-bottom: 0">Invalid credentials. Try again!</h4>
+    <h4 style="margin-bottom: 0">Invalid credentials. Try again!</h4><h5 style="margin-bottom: 0"> Click <a href="#">here</a> if you forgot your login information.</h5>
   </div>
 </form>';
 
@@ -91,8 +92,7 @@ echo '
     <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Help <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="#">FAQ and Guides</a></li>
-            <li><a href="#">Manage your account</a></li>
+            <li><a href="#">Support</a></li>
             <li class="divider"></li>
             <li><a href="#">Contact Us</a></li>
           </ul>

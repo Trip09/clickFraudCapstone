@@ -6,7 +6,10 @@ session_start();
 $action = $_POST['action'];
 
 $tag = $_POST['tagID'];
+$newtag = $_POST['newtag'];
 $desc = $_POST['description'];
+$newdesc = $_POST['newdescription'];
+
 
 // $action == create OR $action == delete
 if($action == 'create'){
@@ -85,17 +88,16 @@ if($action == 'create'){
 
 	// Sanitize for SQLi
 	$username = $_SESSION['username'];	// I believe this variable has already been sanitized from login.php...
-	// $username = mysqli_real_escape_string($conn, $username);
-	// $desc = mysqli_real_escape_string($conn, $desc);
-	// $tag = mysqli_real_escape_string($conn, $tag);
+	$username = mysqli_real_escape_string($conn, $username);
+	$newdesc = mysqli_real_escape_string($conn, $newdesc);
+	$newtag = mysqli_real_escape_string($conn, $newtag);
+
+	echo "username:" . $username . "<br>";
+	echo "newdesc:" . $newdesc . "<br>";
+	echo "newtag:" . $newtag . "<br>";
 
 	// Update tag table with new description
-	echo "tag: " . $tag . "<br>";
-	echo "desc: " . $desc . "<br>";
-	echo "username: " . $username . "<br>"; // works
-	echo "action: " . $action . "<br>"; // works
-
-	$updatequery = "UPDATE tag_id SET description='$desc' WHERE tag_id = '$tag';";
+	$updatequery = "UPDATE tag_id SET description='$newdesc' WHERE tag_id = '$newtag';";
 
 	$result = mysqli_query($conn, $updatequery);
 	if(!$result){

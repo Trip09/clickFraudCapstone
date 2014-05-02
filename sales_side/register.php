@@ -44,9 +44,7 @@ function isValidEmail($email) {
 function checkUsername($username, $conn){
 	// check if username meets requirements
 	// Regex matching for valid username:
-	echo $username . "<br>";
 	$hasApproved = preg_match('/^[a-zA-Z0-9]{3,30}$/', $username);
-	echo $hasApproved;
 
 	if (!($hasApproved))
 	{
@@ -156,8 +154,7 @@ if($validationResult == 4){
 	$result = mysqli_query($conn, $query);
 
 	// Redirect to page thanking the user for registering
-	// header('Location: thanks.php');
-
+	header('Location: thanks.php');
 }
 
 ?>

@@ -52,8 +52,8 @@ include 'session.php';
           <ul class="nav nav-sidebar">
             <li><a href="http://149.166.29.173/sales_side/dashboard.php">Dashboard Home</a></li>
             <li class="active"><a href="http://149.166.29.173/sales_side/tag.php">Tag Management</a></li>
-            <li><a href="#">Reports</a></li>
-            <li><a href="#">Analytics</a></li>
+            <li><a href="#">Reports (Coming soon!)</a></li>
+            <li><a href="#">Analytics (Coming soon!)</a></li>
             <li><a href="http://149.166.29.173/sales_side/account.php">Your Account</a></li>
           </ul>
         </div>

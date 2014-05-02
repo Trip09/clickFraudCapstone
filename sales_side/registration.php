@@ -114,9 +114,9 @@ if(isset($errorid)){
             <input type="password" name="password" id="password" class="form-control" placeholder="Enter Password" required/>
             <?php 
             if(isset($pwderror)) {
-              echo '<font color="red"> * Passwords must be more than 12 characters long and contain three of the following: <br>1)At least one uppercase letter<br>2) At least one lowercase letter<br>3) A number<br>4) A symbol such as ! # $ % & \ ? or (space)</font>';
+              echo '<font color="red"> * Passwords must be more than 12 characters long and contain three of the following: <br>1) At least one uppercase letter<br>2) At least one lowercase letter<br>3) A number<br>4) A symbol such as ! # $ % & \ ? or (space)</font>';
             } else {
-              echo '<p class="help-block">Passwords must be more than 12 characters long and contain three of the following: <br>1)At least one uppercase letter<br>2) At least one lowercase letter<br>3) A number<br>4) A symbol such as ! # $ % & \ ? or (space)<p>';}
+              echo '<p class="help-block">Passwords must be more than 12 characters long and contain three of the following: <br>1) At least one uppercase letter<br>2) At least one lowercase letter<br>3) A number<br>4) A symbol such as ! # $ % & \ ? or (space)<p>';}
             ?>
           </div>
         </div>

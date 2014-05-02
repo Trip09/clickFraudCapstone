@@ -35,7 +35,7 @@
     <div class="container">
 
       <h1>Thanks for registering for TruClick!</h1>
-      <p>Go ahead and sign in to access your new dashboard and get started.</p>
+      <p>Go ahead and sign in to access your new dashboard. To get started, we have created a handy guide you can read <a href="http://149.166.29.173/sales_side/orientation.php">here</a>.</p>
 
     </div> <!-- /container -->
 
